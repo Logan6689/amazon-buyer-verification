@@ -1,23 +1,38 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Amazon Buyer Verification · Get Up to £25 FREE</title>
+<title>Cash Rush UK · Free Amazon Products & Rewards</title>
 <style>
   *{margin:0;padding:0;box-sizing:border-box}
   :root{
     --green:#25D366;--green-dark:#1da851;--orange:#ff6b35;
+    --tg:#0088cc;--tg-dark:#006699;
     --dark:#1a1a2e;--card:#ffffff;--bg:#f5f7fa;
     --text:#2d3436;--text-light:#636e72;--radius:16px;
   }
   body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Roboto','Helvetica Neue',Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden}
   a{text-decoration:none;color:inherit}
 
+  /* ===== Top Nav ===== */
+  .top-nav{
+    position:fixed;top:0;left:0;right:0;z-index:1000;
+    background:rgba(26,26,46,.95);backdrop-filter:blur(8px);
+    color:#fff;display:flex;align-items:center;justify-content:space-between;
+    padding:12px 24px;box-shadow:0 2px 16px rgba(0,0,0,.3);
+  }
+  .nav-logo{font-size:1.1rem;font-weight:800;display:flex;align-items:center;gap:8px}
+  .nav-logo a{color:#fff}
+  .nav-logo .tg-link{font-size:.8rem;color:var(--tg);opacity:.9}
+  .nav-links{display:flex;gap:20px;font-size:.9rem}
+  .nav-links a{color:rgba(255,255,255,.85);transition:color .2s}
+  .nav-links a:hover{color:var(--orange)}
+
   /* ===== Banner ===== */
   .banner{
     background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);
-    color:#fff;padding:60px 20px 50px;text-align:center;position:relative;overflow:hidden;
+    color:#fff;padding:100px 20px 60px;text-align:center;position:relative;overflow:hidden;
   }
   .banner::before{
     content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;
@@ -26,92 +41,129 @@
     animation:bannerGlow 8s ease-in-out infinite alternate;
   }
   @keyframes bannerGlow{0%{transform:translate(0,0)}100%{transform:translate(-3%,2%)}}
-  .banner-content{position:relative;z-index:1;max-width:600px;margin:0 auto}
+  .banner-content{position:relative;z-index:1;max-width:640px;margin:0 auto}
   .banner-emoji{font-size:56px;margin-bottom:16px;display:block}
-  .banner h1{font-size:clamp(1.5rem,5vw,2.2rem);font-weight:800;line-height:1.3;margin-bottom:14px}
+  .banner h1{font-size:clamp(1.4rem,5vw,2rem);font-weight:800;line-height:1.4;margin-bottom:16px}
   .banner h1 span{background:linear-gradient(90deg,var(--orange),#ffd32a);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-  .banner p{font-size:clamp(.95rem,2.5vw,1.1rem);color:rgba(255,255,255,.85);margin-bottom:28px;line-height:1.8}
+  .banner p{font-size:clamp(.95rem,2.5vw,1.1rem);color:rgba(255,255,255,.88);margin-bottom:12px;line-height:1.8}
+  .banner-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:24px}
   .btn-wa{
     display:inline-flex;align-items:center;gap:10px;
-    background:var(--green);color:#fff;font-size:1.1rem;font-weight:700;
-    padding:16px 36px;border-radius:60px;cursor:pointer;
-    box-shadow:0 4px 24px rgba(37,211,102,.4);
-    transition:all .25s;
+    background:var(--green);color:#fff;font-size:1.05rem;font-weight:700;
+    padding:14px 30px;border-radius:60px;cursor:pointer;
+    box-shadow:0 4px 20px rgba(37,211,102,.4);transition:all .25s;
   }
-  .btn-wa:hover{background:var(--green-dark);transform:translateY(-2px);box-shadow:0 6px 30px rgba(37,211,102,.5)}
-  .btn-wa svg{width:24px;height:24px;fill:#fff}
+  .btn-wa:hover{background:var(--green-dark);transform:translateY(-2px)}
+  .btn-wa svg{width:22px;height:22px;fill:#fff}
+  .btn-tg{
+    display:inline-flex;align-items:center;gap:10px;
+    background:var(--tg);color:#fff;font-size:1.05rem;font-weight:700;
+    padding:14px 30px;border-radius:60px;cursor:pointer;
+    box-shadow:0 4px 20px rgba(0,136,204,.4);transition:all .25s;
+  }
+  .btn-tg:hover{background:var(--tg-dark);transform:translateY(-2px)}
+  .btn-tg svg{width:22px;height:22px;fill:#fff}
 
-  /* ===== Sections ===== */
-  .section{padding:50px 20px;max-width:720px;margin:0 auto}
-  .section-title{font-size:clamp(1.2rem,4vw,1.6rem);font-weight:800;text-align:center;margin-bottom:32px}
+  /* ===== Section ===== */
+  .section{padding:56px 20px;max-width:740px;margin:0 auto}
+  .section-title{font-size:clamp(1.2rem,4vw,1.6rem);font-weight:800;text-align:center;margin-bottom:36px}
   .section-title .emoji{margin-right:8px}
 
-  /* ===== Requirements ===== */
-  .req-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px}
+  /* ===== What We Do ===== */
+  .intro-box{
+    background:linear-gradient(135deg,#0088cc 0%,#00a0dc 100%);
+    border-radius:var(--radius);padding:36px 32px;text-align:center;color:#fff;
+    box-shadow:0 4px 20px rgba(0,136,204,.3);
+  }
+  .intro-box h2{font-size:clamp(1.1rem,4vw,1.4rem);font-weight:800;margin-bottom:16px}
+  .intro-box p{font-size:.95rem;line-height:1.8;opacity:.95;margin-bottom:12px}
+  .intro-list{list-style:none;max-width:420px;margin:16px auto 20px;padding:0;text-align:left;font-size:.95rem;line-height:1.9}
+  .intro-list li{padding:3px 0}
+  .intro-cta{margin-top:20px}
+
+  /* ===== Req Grid ===== */
+  .req-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:16px}
   .req-card{
-    background:var(--card);border-radius:var(--radius);padding:28px 20px;text-align:center;
+    background:var(--card);border-radius:var(--radius);padding:28px 18px;text-align:center;
     box-shadow:0 2px 12px rgba(0,0,0,.06);transition:transform .2s,box-shadow .2s;
   }
   .req-card:hover{transform:translateY(-4px);box-shadow:0 8px 28px rgba(0,0,0,.1)}
   .req-icon{font-size:40px;margin-bottom:12px;display:block}
   .req-label{font-weight:700;font-size:1rem;margin-bottom:6px}
-  .req-desc{font-size:.9rem;color:var(--text-light)}
+  .req-desc{font-size:.88rem;color:var(--text-light)}
 
   /* ===== Steps ===== */
-  .steps{position:relative;padding-left:48px}
-  .steps::before{content:'';position:absolute;left:18px;top:8px;bottom:8px;width:3px;background:linear-gradient(180deg,var(--orange),var(--green));border-radius:2px}
+  .steps{position:relative;padding-left:52px}
+  .steps::before{content:'';position:absolute;left:20px;top:8px;bottom:8px;width:3px;background:linear-gradient(180deg,var(--orange),var(--green));border-radius:2px}
   .step{position:relative;margin-bottom:32px}
   .step:last-child{margin-bottom:0}
   .step-num{
-    position:absolute;left:-48px;top:0;width:36px;height:36px;
+    position:absolute;left:-52px;top:0;width:38px;height:38px;
     background:linear-gradient(135deg,var(--orange),var(--green));color:#fff;
     border-radius:50%;display:flex;align-items:center;justify-content:center;
     font-weight:800;font-size:.95rem;
   }
   .step-title{font-weight:700;font-size:1.05rem;margin-bottom:4px}
-  .step-desc{color:var(--text-light);font-size:.95rem}
+  .step-desc{color:var(--text-light);font-size:.93rem;line-height:1.7}
 
-  /* ===== Guide ===== */
-  .guide-box{
-    background:var(--card);border-radius:var(--radius);padding:28px;
-    box-shadow:0 2px 12px rgba(0,0,0,.06);
-  }
+  /* ===== Guide Box ===== */
+  .guide-box{background:var(--card);border-radius:var(--radius);padding:28px;box-shadow:0 2px 12px rgba(0,0,0,.06);}
   .guide-box h3{font-size:1.1rem;margin-bottom:16px}
   .guide-steps{counter-reset:guide;list-style:none;padding:0}
-  .guide-steps li{counter-increment:guide;padding:10px 0 10px 36px;position:relative;font-size:.95rem;color:var(--text-light)}
+  .guide-steps li{counter-increment:guide;padding:10px 0 10px 38px;position:relative;font-size:.95rem;color:var(--text-light);line-height:1.7}
   .guide-steps li::before{
     content:counter(guide);position:absolute;left:0;top:10px;
     width:24px;height:24px;background:var(--orange);color:#fff;border-radius:50%;
     display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:700;
   }
 
-  /* ===== Telegram Section ===== */
-  .telegram-box{
-    background:linear-gradient(135deg,#0088cc 0%,#00a0dc 100%);
-    border-radius:var(--radius);padding:32px;text-align:center;color:#fff;
-    box-shadow:0 4px 20px rgba(0,136,204,.3);
+  /* ===== Invite ===== */
+  .invite-box{
+    background:linear-gradient(135deg,#ff6b35,#ff8c42);
+    border-radius:var(--radius);padding:28px;text-align:center;color:#fff;
+    box-shadow:0 4px 20px rgba(255,107,53,.3);margin-top:36px;
   }
-  .telegram-box h2{font-size:clamp(1.1rem,4vw,1.4rem);font-weight:800;margin-bottom:16px}
-  .telegram-box p{font-size:.95rem;line-height:1.7;margin-bottom:16px;opacity:.95}
-  .telegram-list{list-style:none;max-width:400px;margin:0 auto 20px;padding:0;text-align:left;font-size:.95rem;line-height:1.8}
-  .telegram-list li{padding:2px 0}
-  .btn-tg{
+  .invite-box h3{font-size:1.2rem;font-weight:800;margin-bottom:10px}
+  .invite-box p{font-size:.95rem;opacity:.95;margin-bottom:16px}
+  .btn-invite{
     display:inline-flex;align-items:center;gap:10px;
-    background:#fff;color:#0088cc;font-size:1rem;font-weight:700;
-    padding:14px 32px;border-radius:60px;cursor:pointer;
-    transition:all .25s;
+    background:#fff;color:var(--orange);font-size:1rem;font-weight:700;
+    padding:12px 28px;border-radius:60px;cursor:pointer;transition:all .25s;
   }
-  .btn-tg:hover{transform:translateY(-2px);box-shadow:0 6px 24px rgba(0,0,0,.2)}
+  .btn-invite:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,.2)}
 
-  /* ===== Trust ===== */
-  .trust-cards{display:flex;flex-direction:column;gap:16px}
-  .trust-card{
-    background:var(--card);border-radius:var(--radius);padding:24px;
-    border-left:4px solid var(--green);
+  /* ===== Free Events ===== */
+  .events-box{
+    background:linear-gradient(135deg,#1a1a2e,#302b63);
+    border-radius:var(--radius);padding:32px;color:#fff;
+    box-shadow:0 4px 20px rgba(0,0,0,.15);
+  }
+  .events-box h3{font-size:1.2rem;font-weight:800;margin-bottom:16px;text-align:center}
+  .event-item{margin-bottom:16px;padding:14px 18px;background:rgba(255,255,255,.08);border-radius:12px}
+  .event-item:last-child{margin-bottom:0}
+  .event-item h4{font-size:1rem;font-weight:700;margin-bottom:6px}
+  .event-item p{font-size:.9rem;color:rgba(255,255,255,.8);line-height:1.7}
+  .claim-steps{margin-top:20px;padding:18px;background:rgba(255,255,255,.06);border-radius:12px}
+  .claim-steps h4{font-size:1rem;font-weight:700;margin-bottom:10px}
+  .claim-steps ol{padding-left:20px;font-size:.9rem;color:rgba(255,255,255,.85);line-height:1.8}
+
+  /* ===== Timing ===== */
+  .timing-box{background:var(--card);border-radius:var(--radius);padding:28px;box-shadow:0 2px 12px rgba(0,0,0,.06);}
+  .timing-box h3{font-size:1.1rem;margin-bottom:16px}
+  .timing-item{display:flex;gap:12px;margin-bottom:14px;align-items:flex-start}
+  .timing-item:last-child{margin-bottom:0}
+  .timing-icon{font-size:24px;flex-shrink:0}
+  .timing-text{font-size:.95rem;color:var(--text-light);line-height:1.7}
+
+  /* ===== FAQ ===== */
+  .faq-card{
+    background:var(--card);border-radius:var(--radius);padding:24px 28px;
+    border-left:4px solid var(--green);margin-bottom:16px;
     box-shadow:0 2px 12px rgba(0,0,0,.06);
   }
-  .trust-card h4{font-size:1rem;margin-bottom:8px;display:flex;align-items:center;gap:8px}
-  .trust-card p{font-size:.92rem;color:var(--text-light);line-height:1.8}
+  .faq-card:last-child{margin-bottom:0}
+  .faq-card h4{font-size:1rem;margin-bottom:8px;display:flex;align-items:center;gap:8px}
+  .faq-card p{font-size:.92rem;color:var(--text-light);line-height:1.8}
 
   /* ===== Bottom CTA ===== */
   .bottom-cta{
@@ -119,68 +171,101 @@
     color:#fff;padding:60px 20px;text-align:center;
   }
   .bottom-cta h2{font-size:clamp(1.2rem,4vw,1.6rem);font-weight:800;margin-bottom:12px}
-  .bottom-cta p{color:rgba(255,255,255,.7);margin-bottom:28px;font-size:.95rem}
-  .bottom-cta .btn-wa{font-size:1.2rem;padding:18px 44px}
+  .bottom-cta p{color:rgba(255,255,255,.7);margin-bottom:24px;font-size:.95rem}
+  .bottom-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
 
   /* ===== Footer ===== */
   footer{text-align:center;padding:20px;font-size:.8rem;color:var(--text-light)}
 
-  /* ===== Floating WhatsApp ===== */
-  .float-wa{
-    position:fixed;bottom:24px;right:24px;z-index:999;
-    width:60px;height:60px;border-radius:50%;
-    background:var(--green);display:flex;align-items:center;justify-content:center;
-    box-shadow:0 4px 20px rgba(37,211,102,.5);
-    transition:transform .2s;
+  /* ===== Float Buttons ===== */
+  .float-btns{position:fixed;bottom:24px;right:24px;z-index:999;display:flex;flex-direction:column;gap:12px}
+  .float-btn{
+    width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+    box-shadow:0 4px 16px rgba(0,0,0,.3);transition:transform .2s;
   }
-  .float-wa:hover{transform:scale(1.1)}
-  .float-wa svg{width:32px;height:32px;fill:#fff}
+  .float-btn:hover{transform:scale(1.1)}
+  .float-btn svg{width:28px;height:28px;fill:#fff}
+  .float-wa{background:var(--green)}
+  .float-tg{background:var(--tg)}
 
   /* ===== Responsive ===== */
   @media(max-width:480px){
-    .banner{padding:40px 16px 36px}
-    .section{padding:36px 16px}
-    .req-grid{grid-template-columns:1fr}
+    .top-nav{padding:10px 14px;flex-wrap:wrap;gap:8px}
+    .nav-links{gap:12px;font-size:.8rem}
+    .banner{padding:90px 16px 40px}
+    .section{padding:40px 16px}
+    .req-grid{grid-template-columns:1fr 1fr}
+    .banner-btns{flex-direction:column;align-items:center}
+    .bottom-btns{flex-direction:column;align-items:center}
+    .float-btns{bottom:16px;right:16px}
   }
 </style>
 </head>
 <body>
 
-<!-- ===== Module 1: Banner ===== -->
+<!-- ===== Top Nav ===== -->
+<nav class="top-nav">
+  <div class="nav-logo">
+    <a href="#">💰 Cash Rush UK</a>
+    <a href="https://t.me/+HK6ZteogC4s2OGRk" class="tg-link" target="_blank" rel="noopener">📢 Telegram</a>
+  </div>
+  <div class="nav-links">
+    <a href="#how-it-works">How It Works</a>
+    <a href="#free-events">Free Events</a>
+    <a href="#rewards">Rewards</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- ===== Banner ===== -->
 <section class="banner">
   <div class="banner-content">
     <span class="banner-emoji">🎁</span>
-    <h1>Limited-Time Offer: <span>Verify Your Amazon Order &amp; Get Up to £25 FREE!</span></h1>
-    <p>Simply submit a qualifying Amazon order number. We'll verify it within 12 hours.<br>Each valid order = £5 credit, stackable up to £25 (5 orders). Choose any product you like!</p>
-    <a href="https://wa.me/447737124962" class="btn-wa" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-      Tap Here to Verify via WhatsApp
-    </a>
+    <h1>Welcome to <span>Cash Rush UK</span></h1>
+    <p>Shop on Amazon? There's more to gain here.</p>
+    <p>Have an Amazon order? Claim more free products.<br>
+    No Amazon orders? No worries — join our free gift events on Telegram.<br>
+    Surprises waiting for you! Everyone's welcome, come claim yours!</p>
+    <div class="banner-btns">
+      <a href="https://wa.me/447576525399" class="btn-wa" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp Us
+      </a>
+      <a href="https://t.me/+HK6ZteogC4s2OGRk" class="btn-tg" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.16.16-.295.295-.605.295l.213-3.054 5.56-5.022c.242-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.643-.204-.657-.643.136-.954l11.566-4.458c.537-.194 1.006.131.832.94z"/></svg>
+        Telegram Channel
+      </a>
+    </div>
   </div>
 </section>
 
-<!-- ===== Module 1.5: Telegram Channel ===== -->
-<section class="section">
-  <div class="telegram-box">
-    <h2>📢 No Amazon Orders? No Problem!</h2>
-    <p>Follow our Telegram channel for surprises and freebies every week!</p>
-    <ul class="telegram-list">
-      <li>📅 Weekly free product events at fixed times</li>
-      <li>💷 £5–£20 worth of products — your choice</li>
-      <li>🎟️ Limited slots only!</li>
+<!-- ===== What We Do ===== -->
+<section class="section" id="what-we-do">
+  <div class="intro-box">
+    <h2>📢 Activities & Free Gifts</h2>
+    <p>We regularly host a variety of events — follow our Telegram channel to claim free products!</p>
+    <p>All activities are posted in the channel — just message our support team which event you'd like to join.</p>
+    <ul class="intro-list">
+      <li>📅 Weekly fixed free product events</li>
+      <li>🎁 Random surprise drops anytime</li>
+      <li>🥳 Everyone can participate</li>
     </ul>
-    <p>It's a brilliant community — come say hi! 👋</p>
-    <a href="https://t.me/+kqn0q-lRvjM2OTU0" class="btn-tg" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.16.16-.295.295-.605.295l.213-3.054 5.56-5.022c.242-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.643-.204-.657-.643.136-.954l11.566-4.458c.537-.194 1.006.131.832.94z"/></svg>
-      Join Telegram Channel
-    </a>
+    <div class="intro-cta">
+      <a href="https://t.me/+HK6ZteogC4s2OGRk" class="btn-tg" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.16.16-.295.295-.605.295l.213-3.054 5.56-5.022c.242-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.643-.204-.657-.643.136-.954l11.566-4.458c.537-.194 1.006.131.832.94z"/></svg>
+        Join Telegram Channel
+      </a>
+    </div>
   </div>
 </section>
 
-<!-- ===== Module 2: Order Requirements ===== -->
-<section class="section">
-  <h2 class="section-title"><span class="emoji">📋</span>Eligibility Criteria (All Must Be Met)</h2>
-  <div class="req-grid">
+<!-- ===== How It Works ===== -->
+<section class="section" id="how-it-works">
+  <h2 class="section-title"><span class="emoji">⚙️</span>How It Works</h2>
+
+  <!-- Eligibility -->
+  <h3 style="text-align:center;font-size:1.1rem;margin-bottom:20px;color:var(--text-light)">📋 Eligibility Criteria (All Must Be Met)</h3>
+  <div class="req-grid" style="margin-bottom:36px">
     <div class="req-card">
       <span class="req-icon">🕒</span>
       <div class="req-label">Timeframe</div>
@@ -194,7 +279,7 @@
     <div class="req-card">
       <span class="req-icon">💷</span>
       <div class="req-label">Order Value</div>
-      <div class="req-desc">The value of each order must be between <strong>£20 and £100</strong></div>
+      <div class="req-desc">Each order value must be between <strong>£20 and £100</strong></div>
     </div>
     <div class="req-card">
       <span class="req-icon">🔢</span>
@@ -202,12 +287,20 @@
       <div class="req-desc">Maximum <strong>5 orders per account</strong> per month</div>
     </div>
   </div>
-</section>
 
-<!-- ===== Module 3: How It Works ===== -->
-<section class="section">
-  <h2 class="section-title"><span class="emoji">⚙️</span>Simple 4 Steps to Claim Your Freebie</h2>
-  <div class="steps">
+  <!-- Find Order Number -->
+  <div class="guide-box" style="margin-bottom:36px">
+    <h3>🔍 How to Find Your Amazon Order Number</h3>
+    <ol class="guide-steps">
+      <li>Open the Amazon App or website and go to <strong>Your Orders</strong></li>
+      <li>Select an eligible order and tap <strong>Order details</strong></li>
+      <li>Copy the <strong>Order number</strong>, then send it to us on WhatsApp or Telegram</li>
+    </ol>
+  </div>
+
+  <!-- 4 Steps -->
+  <h3 style="text-align:center;font-size:1.1rem;margin-bottom:20px;color:var(--text-light)">4 Simple Steps to Claim</h3>
+  <div class="steps" style="margin-bottom:36px">
     <div class="step">
       <div class="step-num">1</div>
       <div class="step-title">Submit Your Order</div>
@@ -216,65 +309,113 @@
     <div class="step">
       <div class="step-num">2</div>
       <div class="step-title">Fast Verification</div>
-      <div class="step-desc">We'll verify your order <strong>within 12 hours</strong> and confirm your £5 credit per valid order</div>
+      <div class="step-desc">We verify your order <strong>within 12 hours</strong> and confirm your £5 credit per valid order</div>
     </div>
     <div class="step">
       <div class="step-num">3</div>
-      <div class="step-title">Stack &amp; Choose</div>
-      <div class="step-desc"><strong>Each order = £5 credit, stackable:</strong> 1 order = £5, 3 orders = £15, 5 orders = £25. Send us your chosen product link(s) + delivery address</div>
+      <div class="step-title">Stack & Choose</div>
+      <div class="step-desc"><strong>Each order = £5 credit, stackable:</strong> 1 order = £5, 3 orders = £15, 5 orders = £25. Send us your chosen product link(s) + delivery address with phone number</div>
     </div>
     <div class="step">
       <div class="step-num">4</div>
-      <div class="step-title">Sit Back &amp; Wait for Delivery</div>
-      <div class="step-desc">Our team will arrange dispatch within 48 hours and provide a tracking number</div>
+      <div class="step-title">Sit Back & Wait</div>
+      <div class="step-desc">Our team arranges dispatch within <strong>48 hours</strong> and provides a tracking number</div>
+    </div>
+  </div>
+
+  <!-- Invite & Earn -->
+  <div class="invite-box" id="rewards">
+    <h3>🤝 Invite & Earn</h3>
+    <p>Invite new Amazon shoppers to follow our Telegram channel — earn <strong>£1 to £10</strong> per referral!</p>
+    <a href="https://t.me/+HK6ZteogC4s2OGRk" class="btn-invite" target="_blank" rel="noopener">
+      📩 Message Telegram Support for Your Invite Link
+    </a>
+  </div>
+</section>
+
+<!-- ===== Free Gift Events ===== -->
+<section class="section" id="free-events">
+  <h2 class="section-title"><span class="emoji">🎁</span>Free Gift Events</h2>
+  <div class="events-box">
+    <div class="event-item">
+      <h4>📅 Weekly Fixed Event</h4>
+      <p>Every <strong>Wednesday 12:00–15:00</strong>, £5–£20 reward, limited to the <strong>first 10 users</strong>.</p>
+    </div>
+    <div class="event-item">
+      <h4>🎁 Random Surprise</h4>
+      <p>Anytime! Random amount, <strong>everyone can claim</strong>. All announced on our Telegram channel.</p>
+    </div>
+    <div class="claim-steps">
+      <h4>📝 How to Claim</h4>
+      <ol>
+        <li>Our support team (Telegram or WhatsApp) will tell you the reward amount</li>
+        <li>Pick any Amazon product of equal value</li>
+        <li>Send the product link + delivery address with phone number to support</li>
+        <li>Wait for your parcel!</li>
+      </ol>
     </div>
   </div>
 </section>
 
-<!-- ===== Module 4: How to Find Order Number ===== -->
-<section class="section">
-  <h2 class="section-title"><span class="emoji">🔍</span>How to Find Your Amazon Order Number?</h2>
-  <div class="guide-box">
-    <h3>It's dead simple, just follow these 3 steps:</h3>
-    <ol class="guide-steps">
-      <li>Open the Amazon App or website and go to <strong>Your Orders</strong></li>
-      <li>Select an eligible order and tap <strong>Order details</strong></li>
-      <li>Find the <strong>Order number</strong>, copy it, and send it to us on <strong>WhatsApp or Telegram</strong></li>
-    </ol>
-  </div>
-</section>
-
-<!-- ===== Module 5: Trust &amp; Privacy ===== -->
-<section class="section">
-  <h2 class="section-title"><span class="emoji">🛡️</span>Frequently Asked Questions &amp; Privacy</h2>
-  <div class="trust-cards">
-    <div class="trust-card">
-      <h4>💡 Why do you need my order number?</h4>
-      <p>Your order number is used solely to confirm that you are a genuine, active Amazon buyer. This ensures fairness and authenticity of the promotion.</p>
+<!-- ===== Processing Time ===== -->
+<section class="section" id="timing">
+  <h2 class="section-title"><span class="emoji">⏱️</span>Processing Time</h2>
+  <div class="timing-box">
+    <div class="timing-item">
+      <div class="timing-icon">🔍</div>
+      <div class="timing-text"><strong>Order verification:</strong> within 12 hours after submitting your order number.</div>
     </div>
-    <div class="trust-card">
-      <h4>🔒 Our Privacy Promise</h4>
-      <p>The order information you submit is used exclusively for verification and credit allocation purposes only. It will never be used for any other purpose. We will not ask for unnecessary personal sensitive information after verification. Participate with complete peace of mind!</p>
+    <div class="timing-item">
+      <div class="timing-icon">📦</div>
+      <div class="timing-text"><strong>Dispatch:</strong> within 48 hours after we receive your product link and delivery address with phone number. A tracking number will be provided.</div>
+    </div>
+    <div class="timing-item">
+      <div class="timing-icon">📞</div>
+      <div class="timing-text"><strong>Haven't received your parcel?</strong> Contact our support team immediately for investigation.</div>
     </div>
   </div>
 </section>
 
-<!-- ===== Module 6: Bottom CTA ===== -->
+<!-- ===== FAQ ===== -->
+<section class="section" id="contact">
+  <h2 class="section-title"><span class="emoji">🛡️</span>FAQ & Privacy</h2>
+  <div class="faq-card">
+    <h4>💡 Why do you need my order number?</h4>
+    <p>Your order number is used <strong>only</strong> to verify that you are a genuine, active Amazon buyer. This helps us prevent fraud and ensures the promotion is fair for everyone. We do not use your order information for any other purpose.</p>
+  </div>
+  <div class="faq-card">
+    <h4>🔒 Our Privacy Promise</h4>
+    <p>We respect your privacy. The order information you submit is used <strong>solely for verification and reward allocation</strong> — nothing else. We will never share your data with third parties or ask for unnecessary personal information. Your trust is our priority; participate with complete peace of mind!</p>
+  </div>
+</section>
+
+<!-- ===== Bottom CTA ===== -->
 <section class="bottom-cta">
-  <h2>🎁 What Are You Waiting For? Claim Your Free Credit Now!</h2>
-  <p>WhatsApp exclusive line — one tap away, instant response</p>
-  <a href="https://wa.me/447737124962" class="btn-wa" target="_blank" rel="noopener">
-    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-      Jump to WhatsApp Now
-  </a>
+  <h2>🎁 What Are You Waiting For?<br>Claim Your Free Reward Now!</h2>
+  <p>WhatsApp & Telegram — one tap away, instant response</p>
+  <div class="bottom-btns">
+    <a href="https://wa.me/447576525399" class="btn-wa" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      WhatsApp Us
+    </a>
+    <a href="https://t.me/+HK6ZteogC4s2OGRk" class="btn-tg" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.16.16-.295.295-.605.295l.213-3.054 5.56-5.022c.242-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.643-.204-.657-.643.136-.954l11.566-4.458c.537-.194 1.006.131.832.94z"/></svg>
+      Join Telegram
+    </a>
+  </div>
 </section>
 
-<!-- ===== Floating WhatsApp Button ===== -->
-<a href="https://wa.me/447737124962" class="float-wa" target="_blank" rel="noopener" aria-label="WhatsApp">
-  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-</a>
+<!-- ===== Floating Buttons ===== -->
+<div class="float-btns">
+  <a href="https://wa.me/447576525399" class="float-btn float-wa" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+  <a href="https://t.me/+HK6ZteogC4s2OGRk" class="float-btn float-tg" target="_blank" rel="noopener" aria-label="Telegram">
+    <svg viewBox="0 0 24 24"><path fill="#fff" d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.16.16-.295.295-.605.295l.213-3.054 5.56-5.022c.242-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.643-.204-.657-.643.136-.954l11.566-4.458c.537-.194 1.006.131.832.94z"/></svg>
+  </a>
+</div>
 
-<footer>&copy; 2026 Amazon Buyer Verification. All rights reserved.</footer>
+<footer>© 2026 Cash Rush UK. All rights reserved.</footer>
 
 </body>
 </html>
