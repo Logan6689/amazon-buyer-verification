@@ -3,419 +3,374 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cash Rush UK · Free Amazon Products & Rewards</title>
+<title>Cash Rush UK - Free Amazon Products & Rewards</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap" rel="stylesheet">
 <style>
-  *{margin:0;padding:0;box-sizing:border-box}
-  :root{
-    --green:#25D366;--green-dark:#1da851;--orange:#ff6b35;
-    --tg:#0088cc;--tg-dark:#006699;
-    --dark:#1a1a2e;--card:#ffffff;--bg:#f5f7fa;
-    --text:#2d3436;--text-light:#636e72;--radius:16px;
-  }
-  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI','Roboto','Helvetica Neue',Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden}
-  a{text-decoration:none;color:inherit}
-
-  /* ===== Top Nav ===== */
-  .top-nav{
-    position:fixed;top:0;left:0;right:0;z-index:1000;
-    background:rgba(26,26,46,.95);backdrop-filter:blur(8px);
-    color:#fff;display:flex;align-items:center;justify-content:space-between;
-    padding:12px 24px;box-shadow:0 2px 16px rgba(0,0,0,.3);
-  }
-  .nav-logo{font-size:1.35rem;font-weight:800;display:flex;align-items:center;gap:10px}
-  .nav-logo a{color:#fff}
-  .nav-logo .tg-link{font-size:1rem;color:var(--tg);opacity:.95}
-  .nav-links{display:flex;gap:22px;font-size:1.05rem}
-  .nav-links a{color:rgba(255,255,255,.88);transition:color .2s}
-  .nav-links a:hover{color:var(--orange)}
-
-  /* ===== Banner ===== */
-  .banner{
-    background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);
-    color:#fff;padding:100px 20px 60px;text-align:center;position:relative;overflow:hidden;
-  }
-  .banner::before{
-    content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;
-    background:radial-gradient(circle at 30% 50%,rgba(255,107,53,.15) 0%,transparent 50%),
-               radial-gradient(circle at 70% 50%,rgba(37,211,102,.12) 0%,transparent 50%);
-    animation:bannerGlow 8s ease-in-out infinite alternate;
-  }
-  @keyframes bannerGlow{0%{transform:translate(0,0)}100%{transform:translate(-3%,2%)}}
-  .banner-content{position:relative;z-index:1;max-width:640px;margin:0 auto}
-  .banner-emoji{font-size:56px;margin-bottom:16px;display:block}
-  .banner h1{font-size:clamp(1.4rem,5vw,2rem);font-weight:800;line-height:1.4;margin-bottom:16px}
-  .banner h1 span{background:linear-gradient(90deg,var(--orange),#ffd32a);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-  .banner p{font-size:clamp(.95rem,2.5vw,1.1rem);color:rgba(255,255,255,.88);margin-bottom:12px;line-height:1.8}
-  .banner-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:24px}
-  .btn-wa{
-    display:inline-flex;align-items:center;gap:10px;
-    background:var(--green);color:#fff;font-size:1.05rem;font-weight:700;
-    padding:14px 30px;border-radius:60px;cursor:pointer;
-    box-shadow:0 4px 20px rgba(37,211,102,.4);transition:all .25s;
-  }
-  .btn-wa:hover{background:var(--green-dark);transform:translateY(-2px)}
-  .btn-wa svg{width:22px;height:22px;fill:#fff}
-  .btn-tg{
-    display:inline-flex;align-items:center;gap:10px;
-    background:var(--tg);color:#fff;font-size:1.05rem;font-weight:700;
-    padding:14px 30px;border-radius:60px;cursor:pointer;
-    box-shadow:0 4px 20px rgba(0,136,204,.4);transition:all .25s;
-  }
-  .btn-tg:hover{background:var(--tg-dark);transform:translateY(-2px)}
-  .btn-tg svg{width:22px;height:22px;fill:#fff}
-
-  /* ===== Section ===== */
-  .section{padding:56px 20px;max-width:740px;margin:0 auto}
-  .section-title{font-size:clamp(1.2rem,4vw,1.6rem);font-weight:800;text-align:center;margin-bottom:36px}
-  .section-title .emoji{margin-right:8px}
-
-  /* ===== What We Do ===== */
-  .intro-box{
-    background:linear-gradient(135deg,#0088cc 0%,#00a0dc 100%);
-    border-radius:var(--radius);padding:36px 32px;text-align:center;color:#fff;
-    box-shadow:0 4px 20px rgba(0,136,204,.3);
-  }
-  .intro-box h2{font-size:clamp(1.1rem,4vw,1.4rem);font-weight:800;margin-bottom:16px}
-  .intro-box p{font-size:.95rem;line-height:1.8;opacity:.95;margin-bottom:12px}
-  .intro-list{list-style:none;max-width:420px;margin:16px auto 20px;padding:0;text-align:left;font-size:.95rem;line-height:1.9}
-  .intro-list li{padding:3px 0}
-  .intro-cta{margin-top:20px}
-
-  /* ===== Req Grid ===== */
-  .req-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:16px}
-  .req-card{
-    background:var(--card);border-radius:var(--radius);padding:28px 18px;text-align:center;
-    box-shadow:0 2px 12px rgba(0,0,0,.06);transition:transform .2s,box-shadow .2s;
-  }
-  .req-card:hover{transform:translateY(-4px);box-shadow:0 8px 28px rgba(0,0,0,.1)}
-  .req-icon{font-size:40px;margin-bottom:12px;display:block}
-  .req-label{font-weight:700;font-size:1rem;margin-bottom:6px}
-  .req-desc{font-size:.88rem;color:var(--text-light)}
-
-  /* ===== Steps ===== */
-  .steps{position:relative;padding-left:52px}
-  .steps::before{content:'';position:absolute;left:20px;top:8px;bottom:8px;width:3px;background:linear-gradient(180deg,var(--orange),var(--green));border-radius:2px}
-  .step{position:relative;margin-bottom:32px}
-  .step:last-child{margin-bottom:0}
-  .step-num{
-    position:absolute;left:-52px;top:0;width:38px;height:38px;
-    background:linear-gradient(135deg,var(--orange),var(--green));color:#fff;
-    border-radius:50%;display:flex;align-items:center;justify-content:center;
-    font-weight:800;font-size:.95rem;
-  }
-  .step-title{font-weight:700;font-size:1.05rem;margin-bottom:4px}
-  .step-desc{color:var(--text-light);font-size:.93rem;line-height:1.7}
-
-  /* ===== Guide Box ===== */
-  .guide-box{background:var(--card);border-radius:var(--radius);padding:28px;box-shadow:0 2px 12px rgba(0,0,0,.06);}
-  .guide-box h3{font-size:1.1rem;margin-bottom:16px}
-  .guide-steps{counter-reset:guide;list-style:none;padding:0}
-  .guide-steps li{counter-increment:guide;padding:10px 0 10px 38px;position:relative;font-size:.95rem;color:var(--text-light);line-height:1.7}
-  .guide-steps li::before{
-    content:counter(guide);position:absolute;left:0;top:10px;
-    width:24px;height:24px;background:var(--orange);color:#fff;border-radius:50%;
-    display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:700;
-  }
-
-  /* ===== Invite ===== */
-  .invite-box{
-    background:linear-gradient(135deg,#ff6b35,#ff8c42);
-    border-radius:var(--radius);padding:28px;text-align:center;color:#fff;
-    box-shadow:0 4px 20px rgba(255,107,53,.3);margin-top:36px;
-  }
-  .invite-box h3{font-size:1.2rem;font-weight:800;margin-bottom:10px}
-  .invite-box p{font-size:.95rem;opacity:.95;margin-bottom:16px}
-  .btn-invite{
-    display:inline-flex;align-items:center;gap:10px;
-    background:#fff;color:var(--orange);font-size:1rem;font-weight:700;
-    padding:12px 28px;border-radius:60px;cursor:pointer;transition:all .25s;
-  }
-  .btn-invite:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,.2)}
-
-  /* ===== Free Events ===== */
-  .events-box{
-    background:linear-gradient(135deg,#1a1a2e,#302b63);
-    border-radius:var(--radius);padding:32px;color:#fff;
-    box-shadow:0 4px 20px rgba(0,0,0,.15);
-  }
-  .events-box h3{font-size:1.2rem;font-weight:800;margin-bottom:16px;text-align:center}
-  .event-item{margin-bottom:16px;padding:14px 18px;background:rgba(255,255,255,.08);border-radius:12px}
-  .event-item:last-child{margin-bottom:0}
-  .event-item h4{font-size:1rem;font-weight:700;margin-bottom:6px}
-  .event-item p{font-size:.9rem;color:rgba(255,255,255,.8);line-height:1.7}
-  .claim-steps{margin-top:20px;padding:18px;background:rgba(255,255,255,.06);border-radius:12px}
-  .claim-steps h4{font-size:1rem;font-weight:700;margin-bottom:10px}
-  .claim-steps ol{padding-left:20px;font-size:.9rem;color:rgba(255,255,255,.85);line-height:1.8}
-
-  /* ===== Timing ===== */
-  .timing-box{background:var(--card);border-radius:var(--radius);padding:28px;box-shadow:0 2px 12px rgba(0,0,0,.06);}
-  .timing-box h3{font-size:1.1rem;margin-bottom:16px}
-  .timing-item{display:flex;gap:12px;margin-bottom:14px;align-items:flex-start}
-  .timing-item:last-child{margin-bottom:0}
-  .timing-icon{font-size:24px;flex-shrink:0}
-  .timing-text{font-size:.95rem;color:var(--text-light);line-height:1.7}
-
-  /* ===== FAQ ===== */
-  .faq-card{
-    background:var(--card);border-radius:var(--radius);padding:24px 28px;
-    border-left:4px solid var(--green);margin-bottom:16px;
-    box-shadow:0 2px 12px rgba(0,0,0,.06);
-  }
-  .faq-card:last-child{margin-bottom:0}
-  .faq-card h4{font-size:1rem;margin-bottom:8px;display:flex;align-items:center;gap:8px}
-  .faq-card p{font-size:.92rem;color:var(--text-light);line-height:1.8}
-
-  /* ===== Bottom CTA ===== */
-  .bottom-cta{
-    background:linear-gradient(135deg,#0f0c29,#302b63,#24243e);
-    color:#fff;padding:60px 20px;text-align:center;
-  }
-  .bottom-cta h2{font-size:clamp(1.2rem,4vw,1.6rem);font-weight:800;margin-bottom:12px}
-  .bottom-cta p{color:rgba(255,255,255,.7);margin-bottom:24px;font-size:.95rem}
-  .bottom-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-
-  /* ===== Footer ===== */
-  footer{text-align:center;padding:20px;font-size:.8rem;color:var(--text-light)}
-
-  /* ===== Float Buttons ===== */
-  .float-btns{position:fixed;bottom:24px;right:24px;z-index:999;display:flex;flex-direction:column;gap:12px}
-  .float-btn{
-    width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;
-    box-shadow:0 4px 16px rgba(0,0,0,.3);transition:transform .2s;
-  }
-  .float-btn:hover{transform:scale(1.1)}
-  .float-btn svg{width:28px;height:28px;fill:#fff}
-  .float-wa{background:var(--green)}
-  .float-tg{background:var(--tg)}
-
-  /* ===== Responsive ===== */
-  @media(max-width:480px){
-    .top-nav{padding:10px 14px;flex-wrap:wrap;gap:8px}
-    .nav-links{gap:14px;font-size:.92rem}
-    .banner{padding:90px 16px 40px}
-    .section{padding:40px 16px}
-    .req-grid{grid-template-columns:1fr 1fr}
-    .banner-btns{flex-direction:column;align-items:center}
-    .bottom-btns{flex-direction:column;align-items:center}
-    .float-btns{bottom:16px;right:16px}
-  }
+  body { font-family: 'Inter', system-ui, sans-serif; overflow-x: hidden; }
+  .material-symbols-outlined { font-family: 'Material Symbols Outlined'; font-weight: normal; font-style: normal; font-size: 24px; display: inline-block; line-height: 1; letter-spacing: normal; text-transform: none; white-space: nowrap; word-wrap: normal; direction: ltr; -webkit-font-smoothing: antialiased; }
+  
+  /* Reveal animation */
+  .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.7s cubic-bezier(.22,1,.36,1), transform 0.7s cubic-bezier(.22,1,.36,1); }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  
+  .step-card { background: #fff; border-radius: 24px; padding: 40px 32px; border: 1px solid #e5e7eb; transition: all 0.3s; }
+  .step-card:hover { box-shadow: 0 20px 60px rgba(0,0,0,0.08); transform: translateY(-4px); }
+  .step-num { font-size: 48px; font-weight: 900; color: #6366f1; opacity: 0.15; margin-bottom: 16px; }
+  
+  .btn-tg { background: #0088cc; color: #fff; padding: 14px 32px; border-radius: 9999px; font-weight: 700; font-size: 15px; display: inline-flex; align-items: center; gap: 8px; transition: all 0.2s; text-decoration: none; }
+  .btn-tg:hover { background: #006699; transform: scale(1.02); }
+  .btn-valivy { background: linear-gradient(135deg, #ec4899, #f43f5e); color: #fff; padding: 14px 32px; border-radius: 9999px; font-weight: 700; font-size: 15px; display: inline-flex; align-items: center; gap: 8px; transition: all 0.2s; text-decoration: none; }
+  .btn-valivy:hover { transform: scale(1.02); box-shadow: 0 8px 30px rgba(236,72,153,0.35); }
+  .btn-wa { background: #25D366; color: #fff; padding: 12px 24px; border-radius: 9999px; font-weight: 600; font-size: 14px; display: inline-flex; align-items: center; gap: 8px; text-decoration: none; transition: all 0.2s; }
+  .btn-wa:hover { background: #1da851; }
+  
+  .float-btns { position: fixed; bottom: 24px; right: 24px; z-index: 999; display: flex; flex-direction: column; gap: 14px; }
+  .float-btn { width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(0,0,0,0.2); text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; }
+  .float-btn:hover { transform: scale(1.12); }
+  .float-tg { background: #0088cc; }
+  .float-valivy { background: #fff; border: 2px solid #f0f0f0; }
+  .float-wa { background: #25D366; }
+  @media (max-width: 768px) { .float-btns { bottom: 16px; right: 16px; } .float-btn { width: 52px; height: 52px; } }
+  
+  .feature-row { display: flex; align-items: flex-start; gap: 24px; padding: 28px; border-radius: 20px; transition: background 0.2s; }
+  .feature-row:hover { background: #f9fafb; }
+  .icon-box { width: 56px; height: 56px; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 28px; flex-shrink: 0; }
+  
+  /* Hero art - pure CSS */
+  .hero-art { position: relative; width: 100%; max-width: 480px; margin: 0 auto; }
+  .hero-art-bg { background: linear-gradient(135deg, #eef2ff 0%, #fce7f3 100%); border-radius: 32px; padding: 40px; position: relative; overflow: hidden; min-height: 400px; display: flex; align-items: center; justify-content: center; }
+  .hero-card { background: #fff; border-radius: 20px; padding: 24px; box-shadow: 0 8px 40px rgba(0,0,0,0.08); position: relative; z-index: 1; width: 100%; }
+  .hero-badge { position: absolute; background: #fff; border-radius: 14px; padding: 10px 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); display: flex; align-items: center; gap: 8px; }
+  .hero-badge-tl { top: 20px; left: 20px; }
+  .hero-badge-br { bottom: 20px; right: 20px; }
+  
+  /* Agent art - pure CSS */
+  .agent-art { position: relative; width: 100%; max-width: 480px; margin: 0 auto; }
+  .agent-art-bg { background: linear-gradient(135deg, #fce7f3 0%, #eef2ff 100%); border-radius: 32px; padding: 40px; position: relative; overflow: hidden; min-height: 400px; display: flex; align-items: center; justify-content: center; }
+  .agent-discount { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); background: rgba(236,72,153,0.92); color: #fff; border-radius: 20px; padding: 16px 28px; text-align: center; box-shadow: 0 8px 30px rgba(236,72,153,0.4); z-index: 2; }
+  
+  /* Asymmetric layout for Invite + FAQ */
+  .asym-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+  @media (max-width: 768px) { .asym-grid { grid-template-columns: 1fr; } }
+  
+  .faq-stagger .faq-item:nth-child(odd) { margin-right: 40px; }
+  .faq-stagger .faq-item:nth-child(even) { margin-left: 40px; }
+  @media (max-width: 768px) { .faq-stagger .faq-item:nth-child(odd), .faq-stagger .faq-item:nth-child(even) { margin-left: 0; margin-right: 0; } }
 </style>
 </head>
-<body>
+<body class="bg-white text-gray-800" style="overflow-x:hidden;">
 
-<!-- ===== Top Nav ===== -->
-<nav class="top-nav">
-  <div class="nav-logo">
-    <a href="#">💰 Cash Rush UK</a>
-    <a href="https://t.me/+HK6ZteogC4s2OGRk" class="tg-link" target="_blank" rel="noopener">📢 Telegram</a>
+<!-- Top Nav -->
+<nav style="position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(255,255,255,0.97); backdrop-filter: blur(16px); border-bottom: 1px solid #f0f0f0; display: flex; align-items: center; justify-content: space-between; padding: 10px 36px;">
+  <div style="display: flex; align-items: center; gap: 14px;">
+    <svg viewBox="0 0 24 24" width="48" height="48" fill="#f59e0b" style="flex-shrink: 0; filter: drop-shadow(0 2px 4px rgba(245,158,11,0.3));"><circle cx="12" cy="12" r="10" fill="url(#coinGrad)"/><defs><linearGradient id="coinGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#fbbf24"/><stop offset="100%" style="stop-color:#f59e0b"/></linearGradient></defs><text x="12" y="16" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">£</text></svg>
+    <a href="https://t.me/+HK6ZteogC4s2OGRk" target="_blank" style="font-size: 13px; color: #0088cc; font-weight: 600; text-decoration: none; background: #e6f7ff; padding: 4px 12px; border-radius: 9999px;">Telegram</a>
   </div>
-  <div class="nav-links">
-    <a href="#free-events">Free Events</a>
-    <a href="#how-it-works">Long-term Activities</a>
-    <a href="#rewards">Rewards</a>
-    <a href="#contact">Contact</a>
+  <div style="display: flex; gap: 28px; font-size: 14px; font-weight: 500;">
+    <a href="#how" style="color: #555; text-decoration: none;">Activities</a>
+    <a href="#agent" style="color: #555; text-decoration: none;">Purchase Agent</a>
+    <a href="#invite-faq" style="color: #555; text-decoration: none;">Invite & FAQ</a>
   </div>
 </nav>
 
-<!-- ===== Banner ===== -->
-<section class="banner">
-  <div class="banner-content">
-    <span class="banner-emoji">🎁</span>
-    <h1>Welcome to <span>Cash Rush UK</span></h1>
-    <p>Shop on Amazon? There's more to gain here.</p>
-    <p>Have an Amazon order? Claim more free products.<br>
-    No Amazon orders? No worries — join our free gift events on Telegram.<br>
-    Surprises waiting for you! Everyone's welcome, come claim yours!</p>
-    <div class="banner-btns">
-      <a href="https://t.me/+HK6ZteogC4s2OGRk" class="btn-tg" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" width="22" height="22"><path fill="currentColor" d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.16.16-.295.295-.605.295l.213-3.054 5.56-5.022c.242-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.643-.204-.657-.643.136-.954l11.566-4.458c.537-.194 1.006.131.832.94z"/></svg>
-        Telegram Channel
+<!-- Hero -->
+<section style="padding: 120px 24px 80px; max-width: 1200px; margin: 0 auto;">
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;">
+    <div class="reveal">
+      <div style="display: inline-flex; align-items: center; gap: 8px; background: #eef2ff; color: #6366f1; padding: 8px 20px; border-radius: 9999px; font-size: 13px; font-weight: 600; margin-bottom: 28px;">
+        <span class="material-symbols-outlined" style="font-size: 16px; font-variation-settings: 'FILL' 1;">verified</span>
+        UK Registered Enterprise
+      </div>
+      <h1 style="font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 900; line-height: 1.15; color: #111; margin-bottom: 24px;">
+        Turn Your Amazon Orders Into <span style="color: #6366f1;">Free Rewards</span>
+      </h1>
+      <p style="font-size: 16px; color: #666; max-width: 500px; margin-bottom: 14px; line-height: 1.8;">
+        Have an Amazon order? Exchange it for points and redeem <strong>any Amazon product</strong> on Valivy — for free.
+      </p>
+      <p style="font-size: 14px; color: #999; max-width: 500px; margin-bottom: 36px; line-height: 1.7;">
+        No order? No problem. Follow our Telegram channel — we regularly post free gift events where you can earn points too!
+      </p>
+      <div style="display: flex; gap: 14px; flex-wrap: wrap;">
+        <a href="https://t.me/+HK6ZteogC4s2OGRk" class="btn-tg" target="_blank">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.16.16-.295.295-.605.295l.213-3.054 5.56-5.022c.242-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.643-.204-.657-.643.136-.954l11.566-4.458c.537-.194 1.006.131.832.94z"/></svg>
+          Join Telegram
+        </a>
+        <a href="https://www.valivy.com/" class="btn-valivy" target="_blank">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="#ec4899" style="vertical-align: middle; flex-shrink: 0;"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
+          Submit on Valivy
+        </a>
+      </div>
+    </div>
+    <div class="reveal" data-delay="150">
+      <div class="hero-art">
+        <div class="hero-art-bg">
+          <div class="hero-badge hero-badge-tl">
+            <div style="width: 32px; height: 32px; border-radius: 50%; background: #25D366; display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 700; font-size: 10px;">GBP5</div>
+            <div>
+              <div style="font-size: 10px; color: #999;">Points Earned</div>
+              <div style="font-weight: 700; color: #111; font-size: 13px;">Order Verified</div>
+            </div>
+          </div>
+          <div class="hero-card">
+            <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 14px;">
+              <div style="width: 12px; height: 12px; border-radius: 50%; background: #6366f1; flex-shrink: 0;"></div>
+              <div style="height: 12px; border-radius: 6px; background: #f3f4f6; flex: 1; max-width: 80%;"></div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 14px;">
+              <div style="width: 12px; height: 12px; border-radius: 50%; background: #ec4899; flex-shrink: 0;"></div>
+              <div style="height: 12px; border-radius: 6px; background: #f3f4f6; flex: 1; max-width: 60%;"></div>
+            </div>
+            <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 14px;">
+              <div style="width: 12px; height: 12px; border-radius: 50%; background: #f59e0b; flex-shrink: 0;"></div>
+              <div style="height: 12px; border-radius: 6px; background: #f3f4f6; flex: 1; max-width: 70%;"></div>
+            </div>
+            <div style="margin-top: 20px; background: #f9fafb; border-radius: 12px; padding: 16px; display: flex; align-items: center; gap: 12px;">
+              <div style="width: 48px; height: 48px; border-radius: 12px; background: linear-gradient(135deg, #eef2ff, #fce7f3); display: flex; align-items: center; justify-content: center;">
+                <span class="material-symbols-outlined" style="color: #6366f1; font-variation-settings: 'FILL' 1; font-size: 24px;">card_giftcard</span>
+              </div>
+              <div>
+                <div style="font-size: 11px; color: #999;">Redeem on Valivy</div>
+                <div style="font-weight: 700; color: #111; font-size: 14px;">Any Amazon Product</div>
+              </div>
+            </div>
+          </div>
+          <div class="hero-badge hero-badge-br">
+            <div style="font-size: 11px; color: #999; margin-bottom: 2px;">Free Product</div>
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="#ec4899" style="vertical-align: middle; flex-shrink: 0;"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Trust Bar -->
+<section style="background: #f9fafb; border-top: 1px solid #f0f0f0; border-bottom: 1px solid #f0f0f0; padding: 44px 24px;">
+  <div style="max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 20px;">
+    <div class="reveal" style="display: flex; align-items: center; gap: 12px; justify-content: center;">
+      <div class="icon-box" style="background: #eef2ff; color: #6366f1;"><span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1; font-size: 24px;">calendar_today</span></div>
+      <span style="font-weight: 700; color: #333;">Within 30 days</span>
+    </div>
+    <div class="reveal" data-delay="80" style="display: flex; align-items: center; gap: 12px; justify-content: center;">
+      <div class="icon-box" style="background: #ecfdf5; color: #059669;"><span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1; font-size: 24px;">local_shipping</span></div>
+      <span style="font-weight: 700; color: #333;">Delivered only</span>
+    </div>
+    <div class="reveal" data-delay="160" style="display: flex; align-items: center; gap: 12px; justify-content: center;">
+      <div class="icon-box" style="background: #fef3c7; color: #d97706;"><span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1; font-size: 24px;">payments</span></div>
+      <span style="font-weight: 700; color: #333;">£20 - £100</span>
+    </div>
+    <div class="reveal" data-delay="240" style="display: flex; align-items: center; gap: 12px; justify-content: center;">
+      <div class="icon-box" style="background: #fce7f3; color: #db2777;"><span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1; font-size: 24px;">loyalty</span></div>
+      <span style="font-weight: 700; color: #333;">Max 5 / month</span>
+    </div>
+  </div>
+</section>
+
+<!-- How It Works -->
+<section id="how" style="padding: 96px 24px; max-width: 1100px; margin: 0 auto;">
+  <div class="reveal" style="text-align: center; margin-bottom: 64px;">
+    <h2 style="font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 900; color: #111; margin-bottom: 12px;">How It Works</h2>
+    <p style="font-size: 16px; color: #888; max-width: 500px; margin: 0 auto;">Four simple steps to turn your Amazon orders into free products.</p>
+  </div>
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px;">
+    <div class="step-card reveal">
+      <div class="step-num">01</div>
+      <h3 style="font-weight: 800; font-size: 17px; color: #111; margin-bottom: 8px;">Submit Order</h3>
+      <p style="font-size: 14px; color: #666; line-height: 1.7;">Send your Amazon order number to our support team on <strong style="color: #0088cc;">Telegram</strong>.</p>
+    </div>
+    <div class="step-card reveal" data-delay="100">
+      <div class="step-num" style="color: #f59e0b;">02</div>
+      <h3 style="font-weight: 800; font-size: 17px; color: #111; margin-bottom: 8px;">Fast Verification</h3>
+      <p style="font-size: 14px; color: #666; line-height: 1.7;">We verify within <strong>12 hours</strong> and credit <strong>£5 per order</strong> to your Valivy account.</p>
+    </div>
+    <div class="step-card reveal" data-delay="200">
+      <div class="step-num" style="color: #ec4899;">03</div>
+      <h3 style="font-weight: 800; font-size: 17px; color: #111; margin-bottom: 8px;">Redeem on Valivy</h3>
+      <p style="font-size: 14px; color: #666; line-height: 1.7;">Each order = £5 credit, stackable up to £25. Use points to get any product on <strong style="color: #ec4899;">Valivy</strong> for free.</p>
+    </div>
+    <div class="step-card reveal" data-delay="300">
+      <div class="step-num" style="color: #25D366;">04</div>
+      <h3 style="font-weight: 800; font-size: 17px; color: #111; margin-bottom: 8px;">Wait for Delivery</h3>
+      <p style="font-size: 14px; color: #666; line-height: 1.7;">Dispatch within <strong>48 hours</strong> after confirmation. Tracking number provided.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Amazon Purchase Agent -->
+<section id="agent" style="padding: 96px 24px; background: #f9fafb;">
+  <div style="max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;">
+    <div class="reveal">
+      <div style="display: inline-flex; align-items: center; gap: 8px; background: #fce7f3; color: #db2777; padding: 8px 20px; border-radius: 9999px; font-size: 13px; font-weight: 600; margin-bottom: 24px;">New Service</div>
+      <h2 style="font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 900; color: #111; line-height: 1.2; margin-bottom: 20px;">Amazon Purchase Agent<br><span style="color: #ec4899;">20% OFF</span> Every Order</h2>
+      <p style="font-size: 16px; color: #666; line-height: 1.8; margin-bottom: 20px;">
+        Need to buy something on Amazon? Submit the product link on <strong>Valivy</strong> — we place the order for you at only <strong>80% of the Amazon list price</strong>.
+      </p>
+      <p style="font-size: 15px; color: #888; line-height: 1.8; margin-bottom: 28px;">
+        You specify the Amazon link, we handle the purchase. You only pay <strong>80%</strong> of the listed price. No hidden fees.
+      </p>
+      <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+        <a href="https://www.valivy.com/" class="btn-valivy" target="_blank">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="#ec4899" style="vertical-align: middle; flex-shrink: 0;"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
+          Submit on Valivy
+        </a>
+        <a href="https://t.me/+HK6ZteogC4s2OGRk" class="btn-tg" target="_blank">Ask on Telegram</a>
+      </div>
+    </div>
+    <div class="reveal" data-delay="150">
+      <div class="agent-art">
+        <div class="agent-art-bg">
+          <div style="background: #fff; border-radius: 20px; padding: 28px; box-shadow: 0 8px 40px rgba(0,0,0,0.08); width: 100%; max-width: 320px; position: relative; z-index: 1;">
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 18px;">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="#ec4899" style="vertical-align: middle; flex-shrink: 0;"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
+              <span style="font-size: 12px; color: #999;">Purchase Agent</span>
+            </div>
+            <div style="background: #f9fafb; border-radius: 12px; padding: 14px; margin-bottom: 12px;">
+              <div style="font-size: 11px; color: #999; margin-bottom: 4px;">Amazon List Price</div>
+              <div style="font-size: 18px; color: #999; text-decoration: line-through; font-weight: 600;">£100.00</div>
+            </div>
+            <div style="background: linear-gradient(135deg, #fce7f3, #eef2ff); border-radius: 12px; padding: 14px; margin-bottom: 18px;">
+              <div style="font-size: 11px; color: #999; margin-bottom: 4px;">You Pay (80%)</div>
+              <div style="font-size: 24px; font-weight: 900; color: #ec4899;">£80.00</div>
+            </div>
+            <div style="display: flex; gap: 8px;">
+              <div style="flex: 1; background: #25D366; color: #fff; border-radius: 10px; padding: 10px; text-align: center; font-weight: 700; font-size: 13px;">Pay</div>
+              <div style="flex: 1; background: #0088cc; color: #fff; border-radius: 10px; padding: 10px; text-align: center; font-weight: 700; font-size: 13px;">Order</div>
+              <div style="flex: 1; background: #6366f1; color: #fff; border-radius: 10px; padding: 10px; text-align: center; font-weight: 700; font-size: 13px;">Ship</div>
+            </div>
+          </div>
+          <div class="agent-discount">
+            <div style="font-size: 12px; opacity: 0.9; margin-bottom: 2px;">You Pay</div>
+            <div style="font-size: 28px; font-weight: 900;">80%</div>
+            <div style="font-size: 10px; opacity: 0.8; margin-top: 2px;">of Amazon Price</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Invite & FAQ - Asymmetric Layout -->
+<section id="invite-faq" style="padding: 96px 24px;">
+  <div style="max-width: 1200px; margin: 0 auto;">
+    
+    <!-- Invite Section - Left content, right decoration -->
+    <div class="asym-grid reveal" style="margin-bottom: 96px;">
+      <div>
+        <div class="icon-box" style="background: #6366f1; color: #fff; margin-bottom: 24px; width: 64px; height: 64px;"><span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1; font-size: 28px;">group_add</span></div>
+        <h2 style="font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 900; color: #111; margin-bottom: 16px;">Invite and Earn</h2>
+        <p style="font-size: 15px; color: #666; line-height: 1.8; margin-bottom: 20px;">
+          Invite new Amazon shoppers to follow our Telegram channel and register on Valivy. Earn <strong style="color: #f59e0b;">100 - 1,000 points</strong> for each valid referral!
+        </p>
+        <a href="https://t.me/+HK6ZteogC4s2OGRk" class="btn-tg" target="_blank">Get Your Invite Link</a>
+      </div>
+      <div style="background: linear-gradient(135deg, #eef2ff, #fef3c7); border-radius: 32px; padding: 48px; position: relative; overflow: hidden;">
+        <div style="font-size: 80px; position: absolute; top: -20px; right: -20px; opacity: 0.1;">👥</div>
+        <div style="position: relative; z-index: 1;">
+          <div style="background: #fff; border-radius: 16px; padding: 20px; margin-bottom: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.06);">
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <div style="width: 40px; height: 40px; border-radius: 50%; background: #eef2ff; display: flex; align-items: center; justify-content: center; font-weight: 700; color: #6366f1;">1</div>
+              <div>
+                <div style="font-weight: 600; color: #111; font-size: 14px;">Share your link</div>
+                <div style="font-size: 12px; color: #999;">Send to friends</div>
+              </div>
+            </div>
+          </div>
+          <div style="background: #fff; border-radius: 16px; padding: 20px; margin-bottom: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.06);">
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <div style="width: 40px; height: 40px; border-radius: 50%; background: #fef3c7; display: flex; align-items: center; justify-content: center; font-weight: 700; color: #d97706;">2</div>
+              <div>
+                <div style="font-weight: 600; color: #111; font-size: 14px;">They register</div>
+                <div style="font-size: 12px; color: #999;">Join Valivy</div>
+              </div>
+            </div>
+          </div>
+          <div style="background: #fff; border-radius: 16px; padding: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.06);">
+            <div style="display: flex; align-items: center; gap: 12px;">
+              <div style="width: 40px; height: 40px; border-radius: 50%; background: #fce7f3; display: flex; align-items: center; justify-content: center; font-weight: 700; color: #ec4899;">3</div>
+              <div>
+                <div style="font-weight: 600; color: #111; font-size: 14px;">You earn points</div>
+                <div style="font-size: 12px; color: #999;">100-1000 per referral</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- FAQ Section - Right content, left title -->
+    <div class="reveal">
+      <h2 style="font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 900; color: #111; margin-bottom: 48px; text-align: right;">FAQ and Privacy</h2>
+      <div class="faq-stagger">
+        <div class="faq-item feature-row reveal" style="border-left: 4px solid #25D366; border-radius: 0 20px 20px 0;">
+          <div class="icon-box" style="background: #ecfdf5; color: #059669; flex-shrink: 0;"><span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1; font-size: 24px;">help</span></div>
+          <div>
+            <h4 style="font-weight: 700; font-size: 16px; color: #111; margin-bottom: 6px;">Why do you need my order number?</h4>
+            <p style="font-size: 14px; color: #666; line-height: 1.7;">Only to verify you are a genuine Amazon buyer. Nothing else.</p>
+          </div>
+        </div>
+        <div class="faq-item feature-row reveal" data-delay="100" style="border-right: 4px solid #6366f1; border-left: none; border-radius: 20px 0 0 20px; flex-direction: row-reverse;">
+          <div class="icon-box" style="background: #eef2ff; color: #6366f1; flex-shrink: 0;"><span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1; font-size: 24px;">lock</span></div>
+          <div>
+            <h4 style="font-weight: 700; font-size: 16px; color: #111; margin-bottom: 6px;">Our Privacy Promise</h4>
+            <p style="font-size: 14px; color: #666; line-height: 1.7;">We never share your data with third parties. Participate with peace of mind.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</section>
+
+<!-- Bottom CTA -->
+<section style="padding: 96px 24px; text-align: center; background: #f8faff;">
+  <div class="reveal">
+    <h2 style="font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 900; color: #111; margin-bottom: 12px;">Ready to Start?</h2>
+    <p style="font-size: 16px; color: #666; margin-bottom: 32px;">Join Telegram and submit on Valivy today</p>
+    <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;">
+      <a href="https://t.me/+HK6ZteogC4s2OGRk" class="btn-tg" target="_blank" style="background: #fff; color: #0088cc;">Join Telegram</a>
+      <a href="https://www.valivy.com/" class="btn-valivy" target="_blank">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="#ec4899" style="vertical-align: middle; flex-shrink: 0;"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
+        Go to Valivy
       </a>
-      <a href="https://wa.me/447576525399" class="btn-wa" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        WhatsApp Us
-      </a>
+      <a href="https://wa.me/447576525399" class="btn-wa" target="_blank">WhatsApp</a>
     </div>
   </div>
 </section>
 
-<!-- ===== What We Do ===== -->
-<section class="section" id="what-we-do">
-  <div class="intro-box">
-    <h2>📢 Activities & Free Gifts</h2>
-    <p>We regularly host a variety of events — follow our Telegram channel to claim free products!</p>
-    <p>All activities are posted in the channel — just message our support team which event you'd like to join.</p>
-    <ul class="intro-list">
-      <li>📅 Weekly fixed free product events</li>
-      <li>🎁 Random surprise drops anytime</li>
-      <li>🥳 Everyone can participate</li>
-    </ul>
-    <div class="intro-cta">
-      <a href="https://t.me/+HK6ZteogC4s2OGRk" class="btn-tg" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" width="20" height="20"><path fill="currentColor" d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.16.16-.295.295-.605.295l.213-3.054 5.56-5.022c.242-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.643-.204-.657-.643.136-.954l11.566-4.458c.537-.194 1.006.131.832.94z"/></svg>
-        Join Telegram Channel
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ===== How It Works ===== -->
-<section class="section" id="how-it-works">
-  <h2 class="section-title"><span class="emoji">⚙️</span>Long-term Activities</h2>
-
-  <!-- Eligibility -->
-  <h3 style="text-align:center;font-size:1.1rem;margin-bottom:20px;color:var(--text-light)">📋 Eligibility Criteria (All Must Be Met)</h3>
-  <div class="req-grid" style="margin-bottom:36px">
-    <div class="req-card">
-      <span class="req-icon">🕒</span>
-      <div class="req-label">Timeframe</div>
-      <div class="req-desc">Order must be placed within the <strong>last 30 days</strong></div>
-    </div>
-    <div class="req-card">
-      <span class="req-icon">📦</span>
-      <div class="req-label">Status</div>
-      <div class="req-desc">Order status must show <strong>Delivered</strong></div>
-    </div>
-    <div class="req-card">
-      <span class="req-icon">💷</span>
-      <div class="req-label">Order Value</div>
-      <div class="req-desc">Each order value must be between <strong>£20 and £100</strong></div>
-    </div>
-    <div class="req-card">
-      <span class="req-icon">🔢</span>
-      <div class="req-label">Monthly Limit</div>
-      <div class="req-desc">Maximum <strong>5 orders per account</strong> per month</div>
-    </div>
-  </div>
-
-  <!-- Find Order Number -->
-  <div class="guide-box" style="margin-bottom:36px">
-    <h3>🔍 How to Find Your Amazon Order Number</h3>
-    <ol class="guide-steps">
-      <li>Open the Amazon App or website and go to <strong>Your Orders</strong></li>
-      <li>Select an eligible order and tap <strong>Order details</strong></li>
-      <li>Copy the <strong>Order number</strong>, then send it to us on WhatsApp or Telegram</li>
-    </ol>
-  </div>
-
-  <!-- 4 Steps -->
-  <h3 style="text-align:center;font-size:1.1rem;margin-bottom:20px;color:var(--text-light)">4 Simple Steps to Claim</h3>
-  <div class="steps" style="margin-bottom:36px">
-    <div class="step">
-      <div class="step-num">1</div>
-      <div class="step-title">Submit Your Order</div>
-      <div class="step-desc">Send your Amazon order number to our support team on <strong>WhatsApp or Telegram</strong></div>
-    </div>
-    <div class="step">
-      <div class="step-num">2</div>
-      <div class="step-title">Fast Verification</div>
-      <div class="step-desc">We verify your order <strong>within 12 hours</strong> and confirm your £5 credit per valid order</div>
-    </div>
-    <div class="step">
-      <div class="step-num">3</div>
-      <div class="step-title">Stack & Choose</div>
-      <div class="step-desc"><strong>Each order = £5 credit, stackable:</strong> 1 order = £5, 3 orders = £15, 5 orders = £25. Send us your chosen product link(s) + delivery address with phone number</div>
-    </div>
-    <div class="step">
-      <div class="step-num">4</div>
-      <div class="step-title">Sit Back & Wait</div>
-      <div class="step-desc">Our team arranges dispatch within <strong>48 hours</strong> and provides a tracking number</div>
-    </div>
-  </div>
-
-  <!-- Invite & Earn -->
-  <div class="invite-box" id="rewards">
-    <h3>🤝 Invite & Earn</h3>
-    <p>Invite new Amazon shoppers to follow our Telegram channel — earn <strong>£1 to £10</strong> per referral!</p>
-    <a href="https://t.me/+HK6ZteogC4s2OGRk" class="btn-invite" target="_blank" rel="noopener">
-      📩 Message Telegram Support for Your Invite Link
-    </a>
-  </div>
-</section>
-
-<!-- ===== Free Gift Events ===== -->
-<section class="section" id="free-events">
-  <h2 class="section-title"><span class="emoji">🎁</span>Free Gift Events</h2>
-  <div class="events-box">
-    <div class="event-item">
-      <h4>📅 Weekly Fixed Event</h4>
-      <p>Every <strong>Wednesday 12:00–15:00</strong>, £5–£20 reward, limited to the <strong>first 10 users</strong>.</p>
-    </div>
-    <div class="event-item">
-      <h4>🎁 Random Surprise</h4>
-      <p>Anytime! Random amount, <strong>everyone can claim</strong>. All announced on our Telegram channel.</p>
-    </div>
-    <div class="claim-steps">
-      <h4>📝 How to Claim</h4>
-      <ol>
-        <li>Our support team (via Telegram) will tell you the reward amount</li>
-        <li>Pick any Amazon product of equal value</li>
-        <li>Send the product link + delivery address with phone number to support</li>
-        <li>Wait for your parcel!</li>
-      </ol>
-    </div>
-  </div>
-</section>
-
-<!-- ===== Processing Time ===== -->
-<section class="section" id="timing">
-  <h2 class="section-title"><span class="emoji">⏱️</span>Processing Time</h2>
-  <div class="timing-box">
-    <div class="timing-item">
-      <div class="timing-icon">🔍</div>
-      <div class="timing-text"><strong>Order verification:</strong> within 12 hours after submitting your order number.</div>
-    </div>
-    <div class="timing-item">
-      <div class="timing-icon">📦</div>
-      <div class="timing-text"><strong>Dispatch:</strong> within 48 hours after we receive your product link and delivery address with phone number. A tracking number will be provided.</div>
-    </div>
-    <div class="timing-item">
-      <div class="timing-icon">📞</div>
-      <div class="timing-text"><strong>Haven't received your parcel?</strong> Contact our support team immediately for investigation.</div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== FAQ ===== -->
-<section class="section" id="contact">
-  <h2 class="section-title"><span class="emoji">🛡️</span>FAQ & Privacy</h2>
-  <div class="faq-card">
-    <h4>💡 Why do you need my order number?</h4>
-    <p>Your order number is used <strong>only</strong> to verify that you are a genuine, active Amazon buyer. This helps us prevent fraud and ensures the promotion is fair for everyone. We do not use your order information for any other purpose.</p>
-  </div>
-  <div class="faq-card">
-    <h4>🔒 Our Privacy Promise</h4>
-    <p>We respect your privacy. The order information you submit is used <strong>solely for verification and reward allocation</strong> — nothing else. We will never share your data with third parties or ask for unnecessary personal information. Your trust is our priority; participate with complete peace of mind!</p>
-  </div>
-</section>
-
-<!-- ===== Bottom CTA ===== -->
-<section class="bottom-cta">
-  <h2>🎁 What Are You Waiting For?<br>Claim Your Free Reward Now!</h2>
-  <p>WhatsApp & Telegram — one tap away, instant response</p>
-  <div class="bottom-btns">
-    <a href="https://t.me/+HK6ZteogC4s2OGRk" class="btn-tg" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24" width="24" height="24"><path fill="currentColor" d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.16.16-.295.295-.605.295l.213-3.054 5.56-5.022c.242-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.643-.204-.657-.643.136-.954l11.566-4.458c.537-.194 1.006.131.832.94z"/></svg>
-      Join Telegram
-    </a>
-    <a href="https://wa.me/447576525399" class="btn-wa" target="_blank" rel="noopener">
-      <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-      WhatsApp Us
-    </a>
-  </div>
-</section>
-
-<!-- ===== Floating Buttons ===== -->
+<!-- Floating Buttons -->
 <div class="float-btns">
-  <a href="https://t.me/+HK6ZteogC4s2OGRk" class="float-btn float-tg" target="_blank" rel="noopener" aria-label="Telegram">
-    <svg viewBox="0 0 24 24"><path fill="#fff" d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.16.16-.295.295-.605.295l.213-3.054 5.56-5.022c.242-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.643-.204-.657-.643.136-.954l11.566-4.458c.537-.194 1.006.131.832.94z"/></svg>
+  <a href="https://t.me/+HK6ZteogC4s2OGRk" class="float-btn float-tg" aria-label="Telegram" title="Telegram">
+    <svg viewBox="0 0 24 24" width="28" height="28" fill="#fff"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.16.16-.295.295-.605.295l.213-3.054 5.56-5.022c.242-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.643-.204-.657-.643.136-.954l11.566-4.458c.537-.194 1.006.131.832.94z"/></svg>
   </a>
-  <a href="https://wa.me/447576525399" class="float-btn float-wa" target="_blank" rel="noopener" aria-label="WhatsApp">
-    <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  <a href="https://www.valivy.com/" class="float-btn float-valivy" aria-label="Valivy" title="Valivy">
+    <svg viewBox="0 0 24 24" width="36" height="36" fill="#ec4899" style="vertical-align: middle; flex-shrink: 0;"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
+  </a>
+  <a href="https://wa.me/447576525399" class="float-btn float-wa" aria-label="WhatsApp" title="WhatsApp">
+    <svg viewBox="0 0 24 24" width="28" height="28" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
   </a>
 </div>
 
-<footer>© 2026 Cash Rush UK. All rights reserved.</footer> 
+<footer style="text-align: center; padding: 32px 24px; font-size: 13px; color: #aaa; border-top: 1px solid #f0f0f0;">2026 Cash Rush UK. All rights reserved.</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  var reveals = document.querySelectorAll('.reveal');
+  function reveal() {
+    var windowH = window.innerHeight;
+    reveals.forEach(function(el) {
+      var top = el.getBoundingClientRect().top;
+      var delay = parseInt(el.getAttribute('data-delay') || '0');
+      if (top < windowH - 60) {
+        setTimeout(function() { el.classList.add('visible'); }, delay);
+      }
+    });
+  }
+  reveal();
+  window.addEventListener('scroll', reveal);
+});
+</script>
 
 </body>
 </html>
