@@ -32,7 +32,6 @@
   .float-tg { background: #0088cc; }
   .float-valivy { background: #fff; border: 2px solid #f0f0f0; }
   .float-wa { background: #25D366; }
-  @media (max-width: 768px) { .float-btns { bottom: 16px; right: 16px; } .float-btn { width: 52px; height: 52px; } }
   
   .feature-row { display: flex; align-items: flex-start; gap: 24px; padding: 28px; border-radius: 20px; transition: background 0.2s; }
   .feature-row:hover { background: #f9fafb; }
@@ -53,17 +52,83 @@
   
   /* Asymmetric layout for Invite + FAQ */
   .asym-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
-  @media (max-width: 768px) { .asym-grid { grid-template-columns: 1fr; } }
   
   .faq-stagger .faq-item:nth-child(odd) { margin-right: 40px; }
   .faq-stagger .faq-item:nth-child(even) { margin-left: 40px; }
-  @media (max-width: 768px) { .faq-stagger .faq-item:nth-child(odd), .faq-stagger .faq-item:nth-child(even) { margin-left: 0; margin-right: 0; } }
+  
+  /* ===== Mobile Responsive Styles ===== */
+  @media (max-width: 768px) {
+    /* Float buttons */
+    .float-btns { bottom: 16px; right: 16px; }
+    .float-btn { width: 52px; height: 52px; }
+    .float-btn svg { width: 24px; height: 24px; }
+    
+    /* Hero section - single column */
+    .hero-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
+    .hero-text { text-align: center; }
+    .hero-buttons { justify-content: center; flex-direction: column; align-items: center; }
+    .hero-buttons a { width: 100%; max-width: 280px; justify-content: center; }
+    
+    /* Trust bar */
+    .trust-bar { grid-template-columns: 1fr 1fr !important; gap: 12px !important; }
+    
+    /* Steps */
+    .steps-grid { grid-template-columns: 1fr !important; gap: 16px !important; }
+    .step-card { padding: 28px 24px !important; }
+    
+    /* Agent section - single column */
+    .agent-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
+    .agent-text { text-align: center; }
+    .agent-buttons { justify-content: center; flex-direction: column; align-items: center; }
+    .agent-buttons a { width: 100%; max-width: 280px; justify-content: center; }
+    
+    /* Asymmetric grid */
+    .asym-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
+    
+    /* FAQ stagger */
+    .faq-stagger .faq-item:nth-child(odd),
+    .faq-stagger .faq-item:nth-child(even) { margin-left: 0 !important; margin-right: 0 !important; }
+    
+    /* Bottom CTA */
+    .cta-buttons { flex-direction: column !important; align-items: center !important; }
+    .cta-buttons a { width: 100%; max-width: 280px; justify-content: center; }
+    
+    /* Navigation */
+    .top-nav { padding: 10px 16px !important; }
+    .nav-logo svg { width: 36px !important; height: 36px !important; }
+    .nav-links { gap: 16px !important; font-size: 13px !important; }
+    
+    /* Section padding */
+    .section-padding { padding-left: 16px !important; padding-right: 16px !important; }
+    .section-py { padding-top: 64px !important; padding-bottom: 64px !important; }
+    
+    /* Hero padding */
+    .hero-section { padding: 100px 16px 60px !important; }
+    
+    /* Text sizes */
+    h1 { font-size: clamp(1.6rem, 7vw, 2.4rem) !important; }
+    h2 { font-size: clamp(1.4rem, 6vw, 2rem) !important; }
+    
+    /* Feature row */
+    .feature-row { flex-direction: column !important; text-align: center !important; }
+    .feature-row .icon-box { margin: 0 auto !important; }
+  }
+  
+  @media (max-width: 480px) {
+    /* Extra small devices */
+    .trust-bar { grid-template-columns: 1fr !important; }
+    
+    .btn-tg, .btn-valivy, .btn-wa { padding: 12px 24px !important; font-size: 14px !important; }
+    
+    .hero-art-bg { padding: 24px !important; min-height: 320px !important; }
+    .agent-art-bg { padding: 24px !important; min-height: 320px !important; }
+  }
 </style>
 </head>
 <body class="bg-white text-gray-800" style="overflow-x:hidden;">
 
 <!-- Top Nav -->
-<nav style="position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(255,255,255,0.97); backdrop-filter: blur(16px); border-bottom: 1px solid #f0f0f0; display: flex; align-items: center; justify-content: space-between; padding: 10px 36px;">
+<nav class="top-nav" style="position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(255,255,255,0.97); backdrop-filter: blur(16px); border-bottom: 1px solid #f0f0f0; display: flex; align-items: center; justify-content: space-between; padding: 10px 36px;">
   <div style="display: flex; align-items: center; gap: 14px;">
     <svg viewBox="0 0 24 24" width="48" height="48" fill="#f59e0b" style="flex-shrink: 0; filter: drop-shadow(0 2px 4px rgba(245,158,11,0.3));"><circle cx="12" cy="12" r="10" fill="url(#coinGrad)"/><defs><linearGradient id="coinGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#fbbf24"/><stop offset="100%" style="stop-color:#f59e0b"/></linearGradient></defs><text x="12" y="16" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">£</text></svg>
     <a href="https://t.me/+HK6ZteogC4s2OGRk" target="_blank" style="font-size: 13px; color: #0088cc; font-weight: 600; text-decoration: none; background: #e6f7ff; padding: 4px 12px; border-radius: 9999px;">Telegram</a>
@@ -76,9 +141,9 @@
 </nav>
 
 <!-- Hero -->
-<section style="padding: 120px 24px 80px; max-width: 1200px; margin: 0 auto;">
-  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;">
-    <div class="reveal">
+<section class="hero-section section-padding" style="padding: 120px 24px 80px; max-width: 1200px; margin: 0 auto;">
+  <div class="hero-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;">
+    <div class="hero-text reveal">
       <div style="display: inline-flex; align-items: center; gap: 8px; background: #eef2ff; color: #6366f1; padding: 8px 20px; border-radius: 9999px; font-size: 13px; font-weight: 600; margin-bottom: 28px;">
         <span class="material-symbols-outlined" style="font-size: 16px; font-variation-settings: 'FILL' 1;">verified</span>
         UK Registered Enterprise
@@ -92,7 +157,7 @@
       <p style="font-size: 14px; color: #999; max-width: 500px; margin-bottom: 36px; line-height: 1.7;">
         No order? No problem. Follow our Telegram channel — we regularly post free gift events where you can earn points too!
       </p>
-      <div style="display: flex; gap: 14px; flex-wrap: wrap;">
+      <div class="hero-buttons" style="display: flex; gap: 14px; flex-wrap: wrap;">
         <a href="https://t.me/+HK6ZteogC4s2OGRk" class="btn-tg" target="_blank">
           <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.16.16-.295.295-.605.295l.213-3.054 5.56-5.022c.242-.213-.054-.334-.373-.121l-6.869 4.326-2.96-.924c-.643-.204-.657-.643.136-.954l11.566-4.458c.537-.194 1.006.131.832.94z"/></svg>
           Join Telegram
@@ -147,8 +212,8 @@
 </section>
 
 <!-- Trust Bar -->
-<section style="background: #f9fafb; border-top: 1px solid #f0f0f0; border-bottom: 1px solid #f0f0f0; padding: 44px 24px;">
-  <div style="max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 20px;">
+<section class="section-padding" style="background: #f9fafb; border-top: 1px solid #f0f0f0; border-bottom: 1px solid #f0f0f0; padding: 44px 24px;">
+  <div class="trust-bar" style="max-width: 900px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 20px;">
     <div class="reveal" style="display: flex; align-items: center; gap: 12px; justify-content: center;">
       <div class="icon-box" style="background: #eef2ff; color: #6366f1;"><span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1; font-size: 24px;">calendar_today</span></div>
       <span style="font-weight: 700; color: #333;">Within 30 days</span>
@@ -169,12 +234,12 @@
 </section>
 
 <!-- How It Works -->
-<section id="how" style="padding: 96px 24px; max-width: 1100px; margin: 0 auto;">
+<section id="how" class="section-py section-padding" style="padding: 96px 24px; max-width: 1100px; margin: 0 auto;">
   <div class="reveal" style="text-align: center; margin-bottom: 64px;">
     <h2 style="font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 900; color: #111; margin-bottom: 12px;">How It Works</h2>
     <p style="font-size: 16px; color: #888; max-width: 500px; margin: 0 auto;">Four simple steps to turn your Amazon orders into free products.</p>
   </div>
-  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px;">
+  <div class="steps-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px;">
     <div class="step-card reveal">
       <div class="step-num">01</div>
       <h3 style="font-weight: 800; font-size: 17px; color: #111; margin-bottom: 8px;">Submit Order</h3>
@@ -199,51 +264,53 @@
 </section>
 
 <!-- Amazon Purchase Agent -->
-<section id="agent" style="padding: 96px 24px; background: #f9fafb;">
-  <div style="max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;">
-    <div class="reveal">
-      <div style="display: inline-flex; align-items: center; gap: 8px; background: #fce7f3; color: #db2777; padding: 8px 20px; border-radius: 9999px; font-size: 13px; font-weight: 600; margin-bottom: 24px;">New Service</div>
-      <h2 style="font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 900; color: #111; line-height: 1.2; margin-bottom: 20px;">Amazon Purchase Agent<br><span style="color: #ec4899;">20% OFF</span> Every Order</h2>
-      <p style="font-size: 16px; color: #666; line-height: 1.8; margin-bottom: 20px;">
-        Need to buy something on Amazon? Submit the product link on <strong>Valivy</strong> — we place the order for you at only <strong>80% of the Amazon list price</strong>.
-      </p>
-      <p style="font-size: 15px; color: #888; line-height: 1.8; margin-bottom: 28px;">
-        You specify the Amazon link, we handle the purchase. You only pay <strong>80%</strong> of the listed price. No hidden fees.
-      </p>
-      <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-        <a href="https://www.valivy.com/" class="btn-valivy" target="_blank">
-          <svg viewBox="0 0 24 24" width="20" height="20" fill="#ec4899" style="vertical-align: middle; flex-shrink: 0;"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
-          Submit on Valivy
-        </a>
-        <a href="https://t.me/+HK6ZteogC4s2OGRk" class="btn-tg" target="_blank">Ask on Telegram</a>
+<section id="agent" class="section-py" style="padding: 96px 24px; background: #f9fafb;">
+  <div style="max-width: 1100px; margin: 0 auto;">
+    <div class="agent-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center;">
+      <div class="agent-text reveal">
+        <div style="display: inline-flex; align-items: center; gap: 8px; background: #fce7f3; color: #db2777; padding: 8px 20px; border-radius: 9999px; font-size: 13px; font-weight: 600; margin-bottom: 24px;">New Service</div>
+        <h2 style="font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 900; color: #111; line-height: 1.2; margin-bottom: 20px;">Amazon Purchase Agent<br><span style="color: #ec4899;">20% OFF</span> Every Order</h2>
+        <p style="font-size: 16px; color: #666; line-height: 1.8; margin-bottom: 20px;">
+          Need to buy something on Amazon? Submit the product link on <strong>Valivy</strong> — we place the order for you at only <strong>80% of the Amazon list price</strong>.
+        </p>
+        <p style="font-size: 15px; color: #888; line-height: 1.8; margin-bottom: 28px;">
+          You specify the Amazon link, we handle the purchase. You only pay <strong>80%</strong> of the listed price. No hidden fees.
+        </p>
+        <div class="agent-buttons" style="display: flex; gap: 12px; flex-wrap: wrap;">
+          <a href="https://www.valivy.com/" class="btn-valivy" target="_blank">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="#ec4899" style="vertical-align: middle; flex-shrink: 0;"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
+            Submit on Valivy
+          </a>
+          <a href="https://t.me/+HK6ZteogC4s2OGRk" class="btn-tg" target="_blank">Ask on Telegram</a>
+        </div>
       </div>
-    </div>
-    <div class="reveal" data-delay="150">
-      <div class="agent-art">
-        <div class="agent-art-bg">
-          <div style="background: #fff; border-radius: 20px; padding: 28px; box-shadow: 0 8px 40px rgba(0,0,0,0.08); width: 100%; max-width: 320px; position: relative; z-index: 1;">
-            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 18px;">
-              <svg viewBox="0 0 24 24" width="22" height="22" fill="#ec4899" style="vertical-align: middle; flex-shrink: 0;"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
-              <span style="font-size: 12px; color: #999;">Purchase Agent</span>
+      <div class="reveals" data-delay="150">
+        <div class="agent-art">
+          <div class="agent-art-bg">
+            <div style="background: #fff; border-radius: 20px; padding: 28px; box-shadow: 0 8px 40px rgba(0,0,0,0.08); width: 100%; max-width: 320px; position: relative; z-index: 1;">
+              <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 18px;">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="#ec4899" style="vertical-align: middle; flex-shrink: 0;"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
+                <span style="font-size: 12px; color: #999;">Purchase Agent</span>
+              </div>
+              <div style="background: #f9fafb; border-radius: 12px; padding: 14px; margin-bottom: 12px;">
+                <div style="font-size: 11px; color: #999; margin-bottom: 4px;">Amazon List Price</div>
+                <div style="font-size: 18px; color: #999; text-decoration: line-through; font-weight: 600;">£100.00</div>
+              </div>
+              <div style="background: linear-gradient(135deg, #fce7f3, #eef2ff); border-radius: 12px; padding: 14px; margin-bottom: 18px;">
+                <div style="font-size: 11px; color: #999; margin-bottom: 4px;">You Pay (80%)</div>
+                <div style="font-size: 24px; font-weight: 900; color: #ec4899;">£80.00</div>
+              </div>
+              <div style="display: flex; gap: 8px;">
+                <div style="flex: 1; background: #25D366; color: #fff; border-radius: 10px; padding: 10px; text-align: center; font-weight: 700; font-size: 13px;">Pay</div>
+                <div style="flex: 1; background: #0088cc; color: #fff; border-radius: 10px; padding: 10px; text-align: center; font-weight: 700; font-size: 13px;">Order</div>
+                <div style="flex: 1; background: #6366f1; color: #fff; border-radius: 10px; padding: 10px; text-align: center; font-weight: 700; font-size: 13px;">Ship</div>
+              </div>
             </div>
-            <div style="background: #f9fafb; border-radius: 12px; padding: 14px; margin-bottom: 12px;">
-              <div style="font-size: 11px; color: #999; margin-bottom: 4px;">Amazon List Price</div>
-              <div style="font-size: 18px; color: #999; text-decoration: line-through; font-weight: 600;">£100.00</div>
+            <div class="agent-discount">
+              <div style="font-size: 12px; opacity: 0.9; margin-bottom: 2px;">You Pay</div>
+              <div style="font-size: 28px; font-weight: 900;">80%</div>
+              <div style="font-size: 10px; opacity: 0.8; margin-top: 2px;">of Amazon Price</div>
             </div>
-            <div style="background: linear-gradient(135deg, #fce7f3, #eef2ff); border-radius: 12px; padding: 14px; margin-bottom: 18px;">
-              <div style="font-size: 11px; color: #999; margin-bottom: 4px;">You Pay (80%)</div>
-              <div style="font-size: 24px; font-weight: 900; color: #ec4899;">£80.00</div>
-            </div>
-            <div style="display: flex; gap: 8px;">
-              <div style="flex: 1; background: #25D366; color: #fff; border-radius: 10px; padding: 10px; text-align: center; font-weight: 700; font-size: 13px;">Pay</div>
-              <div style="flex: 1; background: #0088cc; color: #fff; border-radius: 10px; padding: 10px; text-align: center; font-weight: 700; font-size: 13px;">Order</div>
-              <div style="flex: 1; background: #6366f1; color: #fff; border-radius: 10px; padding: 10px; text-align: center; font-weight: 700; font-size: 13px;">Ship</div>
-            </div>
-          </div>
-          <div class="agent-discount">
-            <div style="font-size: 12px; opacity: 0.9; margin-bottom: 2px;">You Pay</div>
-            <div style="font-size: 28px; font-weight: 900;">80%</div>
-            <div style="font-size: 10px; opacity: 0.8; margin-top: 2px;">of Amazon Price</div>
           </div>
         </div>
       </div>
@@ -252,7 +319,7 @@
 </section>
 
 <!-- Invite & FAQ - Asymmetric Layout -->
-<section id="invite-faq" style="padding: 96px 24px;">
+<section id="invite-faq" class="section-py section-padding" style="padding: 96px 24px;">
   <div style="max-width: 1200px; margin: 0 auto;">
     
     <!-- Invite Section - Left content, right decoration -->
@@ -324,11 +391,11 @@
 </section>
 
 <!-- Bottom CTA -->
-<section style="padding: 96px 24px; text-align: center; background: #f8faff;">
+<section class="section-padding" style="padding: 96px 24px; text-align: center; background: #f8faff;">
   <div class="reveal">
     <h2 style="font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 900; color: #111; margin-bottom: 12px;">Ready to Start?</h2>
     <p style="font-size: 16px; color: #666; margin-bottom: 32px;">Join Telegram and submit on Valivy today</p>
-    <div style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;">
+    <div class="cta-buttons" style="display: flex; gap: 14px; justify-content: center; flex-wrap: wrap;">
       <a href="https://t.me/+HK6ZteogC4s2OGRk" class="btn-tg" target="_blank" style="background: #fff; color: #0088cc;">Join Telegram</a>
       <a href="https://www.valivy.com/" class="btn-valivy" target="_blank">
         <svg viewBox="0 0 24 24" width="20" height="20" fill="#ec4899" style="vertical-align: middle; flex-shrink: 0;"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
