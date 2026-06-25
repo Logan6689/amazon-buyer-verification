@@ -94,9 +94,11 @@
     .cta-buttons a { width: 100%; max-width: 280px; justify-content: center; }
     
     /* Navigation */
-    .top-nav { padding: 10px 16px !important; }
+    .top-nav { padding: 10px 16px !important; flex-direction: column !important; align-items: center !important; gap: 10px !important; }
+    .nav-left { justify-content: center !important; }
     .nav-logo svg { width: 36px !important; height: 36px !important; }
-    .nav-links { gap: 16px !important; font-size: 13px !important; }
+    .nav-tg { display: inline-flex !important; }
+    .nav-links { gap: 12px 20px !important; font-size: 13px !important; justify-content: center !important; flex-wrap: wrap !important; }
     
     /* Section padding */
     .section-padding { padding-left: 16px !important; padding-right: 16px !important; }
@@ -116,7 +118,7 @@
   
   @media (max-width: 480px) {
     /* Extra small devices */
-    .trust-bar { grid-template-columns: 1fr !important; }
+    .trust-bar { grid-template-columns: 1fr 1fr !important; gap: 10px !important; }
     
     .btn-tg, .btn-valivy, .btn-wa { padding: 12px 24px !important; font-size: 14px !important; }
     
@@ -129,11 +131,11 @@
 
 <!-- Top Nav -->
 <nav class="top-nav" style="position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(255,255,255,0.97); backdrop-filter: blur(16px); border-bottom: 1px solid #f0f0f0; display: flex; align-items: center; justify-content: space-between; padding: 10px 36px;">
-  <div style="display: flex; align-items: center; gap: 14px;">
+  <div class="nav-left" style="display: flex; align-items: center; gap: 14px;">
     <svg viewBox="0 0 24 24" width="48" height="48" fill="#f59e0b" style="flex-shrink: 0; filter: drop-shadow(0 2px 4px rgba(245,158,11,0.3));"><circle cx="12" cy="12" r="10" fill="url(#coinGrad)"/><defs><linearGradient id="coinGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#fbbf24"/><stop offset="100%" style="stop-color:#f59e0b"/></linearGradient></defs><text x="12" y="16" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">£</text></svg>
-    <a href="https://t.me/+HK6ZteogC4s2OGRk" target="_blank" style="font-size: 13px; color: #0088cc; font-weight: 600; text-decoration: none; background: #e6f7ff; padding: 4px 12px; border-radius: 9999px;">Telegram</a>
+    <a href="https://t.me/+HK6ZteogC4s2OGRk" target="_blank" class="nav-tg" style="font-size: 13px; color: #0088cc; font-weight: 600; text-decoration: none; background: #e6f7ff; padding: 4px 12px; border-radius: 9999px;">Telegram</a>
   </div>
-  <div style="display: flex; gap: 28px; font-size: 14px; font-weight: 500;">
+  <div class="nav-links" style="display: flex; gap: 28px; font-size: 14px; font-weight: 500;">
     <a href="#how" style="color: #555; text-decoration: none;">Activities</a>
     <a href="#agent" style="color: #555; text-decoration: none;">Purchase Agent</a>
     <a href="#invite-faq" style="color: #555; text-decoration: none;">Invite & FAQ</a>
