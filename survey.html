@@ -81,6 +81,8 @@
   .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(255,107,53,0.4); }
   .submit-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
   .submit-note { font-size: 13px; color: #999; margin-top: 12px; }
+  .submit-loading { display: inline-block; width: 16px; height: 16px; border: 2px solid rgba(255,255,255,0.3); border-top-color: #fff; border-radius: 50%; animation: spin 0.8s linear infinite; vertical-align: middle; margin-right: 8px; }
+  @keyframes spin { to { transform: rotate(360deg); } }
 
   /* Success overlay */
   .success-overlay { position: fixed; inset: 0; z-index: 9999; background: rgba(0,0,0,0.5); display: none; align-items: center; justify-content: center; padding: 24px; }
@@ -289,7 +291,7 @@
   <!-- Submit -->
   <div class="submit-section">
     <button type="submit" class="submit-btn" id="submitBtn" onclick="submitSurvey()">Submit & Claim Points →</button>
-    <div class="submit-note">Your answers go directly to our team via Telegram. We'll send your points within 24 hours.</div>
+    <div class="submit-note">Your answers are sent directly to our team. We'll send your points within 24 hours.</div>
   </div>
 
 </form>
@@ -297,12 +299,10 @@
 <!-- Success overlay -->
 <div class="success-overlay" id="successOverlay">
   <div class="success-card">
-    <div class="success-icon">✓</div>
-    <h2>Thank you!</h2>
-    <p id="successMsg">Your survey responses are ready to send. Click below to send them via Telegram and claim your points.</p>
-    <div class="success-actions">
-      <a href="#" id="tgLink" class="success-btn success-btn-tg" target="_blank">Send via Telegram →</a>
-      <a href="#" id="waLink" class="success-btn success-btn-wa" target="_blank">Send via WhatsApp →</a>
+    <div class="success-icon" id="successIcon">⏳</div>
+    <h2 id="successTitle">Submitting...</h2>
+    <p id="successMsg">Sending your survey responses...</p>
+    <div class="success-actions" id="successActions" style="display:none;">
       <a href="javascript:void(0)" class="success-btn success-btn-close" onclick="closeSuccess()">Close</a>
     </div>
   </div>
@@ -358,7 +358,10 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.1 });
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-// Build survey message and submit
+// Build survey message and submit directly to Telegram Bot API
+const BOT_TOKEN = '8851236279:AAG9qEgF7vJDgoW58uDc4lyYyPy4R9_Pzcg';
+const CHAT_ID = '7977673119';
+
 function submitSurvey() {
   const contact = document.getElementById('contact').value.trim();
   if (!contact) {
@@ -370,16 +373,46 @@ function submitSurvey() {
   const msg = buildMessage(contact);
   if (!msg) return;
 
-  // Encode for Telegram
-  const tgText = encodeURIComponent(msg);
-  const tgUrl = 'https://t.me/amazonclub16?text=' + tgText;
-  const waText = encodeURIComponent(msg);
-  const waUrl = 'https://wa.me/447576525399?text=' + waText;
-
-  document.getElementById('tgLink').href = tgUrl;
-  document.getElementById('waLink').href = waUrl;
+  // Show loading state
   document.getElementById('successOverlay').classList.add('open');
   document.body.style.overflow = 'hidden';
+  document.getElementById('successIcon').textContent = '⏳';
+  document.getElementById('successTitle').textContent = 'Submitting...';
+  document.getElementById('successMsg').textContent = 'Sending your survey responses...';
+  document.getElementById('successActions').style.display = 'none';
+
+  // Send directly via Telegram Bot API (supports CORS)
+  fetch('https://api.telegram.org/bot' + BOT_TOKEN + '/sendMessage', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      chat_id: CHAT_ID,
+      text: msg,
+      parse_mode: 'Markdown'
+    })
+  })
+  .then(resp => resp.json())
+  .then(data => {
+    if (data.ok) {
+      document.getElementById('successIcon').textContent = '✓';
+      document.getElementById('successTitle').textContent = 'Thank you!';
+      document.getElementById('successMsg').textContent = 'Your survey has been submitted successfully. We will send your 200-500 points within 24 hours!';
+      document.getElementById('successActions').style.display = 'flex';
+      // Reset form
+      document.getElementById('surveyForm').reset();
+      document.querySelectorAll('.radio-option.selected').forEach(el => el.classList.remove('selected'));
+      document.querySelectorAll('.checkbox-option.checked').forEach(el => el.classList.remove('checked'));
+    } else {
+      throw new Error(data.description || 'API error');
+    }
+  })
+  .catch(err => {
+    document.getElementById('successIcon').textContent = '⚠️';
+    document.getElementById('successTitle').textContent = 'Submission failed';
+    document.getElementById('successMsg').textContent = 'Something went wrong. Please try again or contact us via Telegram.';
+    document.getElementById('successActions').style.display = 'flex';
+    console.error('Survey submit error:', err);
+  });
 }
 
 function buildMessage(contact) {
@@ -441,7 +474,7 @@ function buildMessage(contact) {
   msg += '\n🔟 Would you recommend VALIVY?\n→ ' + q10 + '\n';
 
   msg += '\n━━━━━━━━━━━━━━━\n';
-  msg += '✅ Survey complete — please send to claim points!';
+  msg += '✅ Survey submitted automatically';
 
   return msg;
 }
