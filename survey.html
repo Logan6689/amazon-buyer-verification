@@ -322,8 +322,18 @@
 // Radio selection
 document.querySelectorAll('.radio-option').forEach(opt => {
   opt.addEventListener('click', function(e) {
-    // Don't toggle if clicking inside the "Other" text input
-    if (e.target.tagName === 'INPUT' && e.target.type === 'text') return;
+    // Don't intercept clicks on the "Other" text input
+    if (e.target.tagName === 'INPUT' && e.target.type === 'text') {
+      // Still select this radio option
+      const group = this.closest('.radio-group');
+      group.querySelectorAll('.radio-option').forEach(o => o.classList.remove('selected'));
+      this.classList.add('selected');
+      const radio = this.querySelector('input[type="radio"]');
+      if (radio) radio.checked = true;
+      e.stopPropagation();
+      return;
+    }
+    e.preventDefault();
     const group = this.closest('.radio-group');
     group.querySelectorAll('.radio-option').forEach(o => o.classList.remove('selected'));
     this.classList.add('selected');
@@ -334,7 +344,8 @@ document.querySelectorAll('.radio-option').forEach(opt => {
 
 // Checkbox selection
 document.querySelectorAll('.checkbox-option').forEach(opt => {
-  opt.addEventListener('click', function() {
+  opt.addEventListener('click', function(e) {
+    e.preventDefault();
     this.classList.toggle('checked');
     const cb = this.querySelector('input[type="checkbox"]');
     if (cb) cb.checked = this.classList.contains('checked');
