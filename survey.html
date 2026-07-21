@@ -3,10 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VALIVY User Survey — Earn 200-500 Points</title>
+<title>VALIVY Shopping Survey — Earn 200 Points</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; background: #f8faff; color: #1a1a2e; line-height: 1.6; }
@@ -26,6 +25,8 @@
   .survey-hero .badge { display: inline-block; background: #fff3ed; color: #FF6B35; padding: 6px 16px; border-radius: 9999px; font-size: 13px; font-weight: 700; margin-bottom: 16px; }
   .survey-hero h1 { font-size: clamp(28px, 5vw, 40px); font-weight: 900; margin-bottom: 12px; background: linear-gradient(135deg, #1a1a2e, #FF6B35); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
   .survey-hero p { font-size: 16px; color: #666; max-width: 560px; margin: 0 auto; }
+  .hero-highlight { background: #fff8e7; border: 1px solid #ffe9a8; border-radius: 16px; padding: 16px 24px; max-width: 560px; margin: 20px auto 0; font-size: 14px; color: #8a6d00; }
+  .hero-highlight strong { color: #5a4500; }
 
   /* Form */
   .survey-form { max-width: 760px; margin: 0 auto; padding: 0 24px 80px; }
@@ -65,10 +66,6 @@
   .checkbox-option.checked .checkbox-box::after { content: '✓'; position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 14px; font-weight: 700; }
   .checkbox-label { font-size: 15px; color: #333; }
 
-  .other-input { margin-top: 8px; padding-left: 32px; }
-  .other-input input { width: 100%; max-width: 400px; padding: 10px 14px; border: 2px solid #eee; border-radius: 10px; font-size: 14px; font-family: inherit; background: #fafafa; }
-  .other-input input:focus { outline: none; border-color: #FF6B35; background: #fff; }
-
   /* Contact section */
   .contact-section { background: linear-gradient(135deg, #fff3ed, #fff); border: 2px solid #ffe0d0; }
   .contact-input { width: 100%; padding: 16px 18px; border: 2px solid #FF6B35; border-radius: 12px; font-size: 16px; font-family: inherit; background: #fff; }
@@ -81,8 +78,6 @@
   .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(255,107,53,0.4); }
   .submit-btn:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
   .submit-note { font-size: 13px; color: #999; margin-top: 12px; }
-  .submit-loading { display: inline-block; width: 16px; height: 16px; border: 2px solid rgba(255,255,255,0.3); border-top-color: #fff; border-radius: 50%; animation: spin 0.8s linear infinite; vertical-align: middle; margin-right: 8px; }
-  @keyframes spin { to { transform: rotate(360deg); } }
 
   /* Success overlay */
   .success-overlay { position: fixed; inset: 0; z-index: 9999; background: rgba(0,0,0,0.5); display: none; align-items: center; justify-content: center; padding: 24px; }
@@ -93,10 +88,6 @@
   .success-card p { font-size: 15px; color: #666; margin-bottom: 24px; line-height: 1.6; }
   .success-actions { display: flex; flex-direction: column; gap: 10px; }
   .success-btn { display: block; padding: 14px 24px; border-radius: 12px; font-size: 15px; font-weight: 700; text-decoration: none; transition: all 0.2s; }
-  .success-btn-tg { background: #0088cc; color: #fff; }
-  .success-btn-tg:hover { background: #0099dd; }
-  .success-btn-wa { background: #25D366; color: #fff; }
-  .success-btn-wa:hover { background: #20bd5a; }
   .success-btn-close { background: #f0f0f0; color: #555; }
   .success-btn-close:hover { background: #e0e0e0; }
 
@@ -128,7 +119,7 @@
 <nav class="top-nav">
   <div class="nav-top-row">
     <div class="nav-left">
-      <svg viewBox="0 0 24 24" width="48" height="48" fill="#f59e0b" style="flex-shrink: 0; filter: drop-shadow(0 2px 4px rgba(245,158,11,0.3));"><circle cx="12" cy="12" r="10" fill="url(#coinGrad)"/><defs><linearGradient id="coinGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#fbbf24"/><stop offset="100%" style="stop-color:#f59e0b"/></linearGradient></defs><text x="12" y="16" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">£</text></svg>
+      <svg viewBox="0 0 24 24" width="48" height="48" style="flex-shrink: 0; filter: drop-shadow(0 2px 4px rgba(245,158,11,0.3));"><circle cx="12" cy="12" r="10" fill="url(#coinGrad)"/><defs><linearGradient id="coinGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" style="stop-color:#fbbf24"/><stop offset="100%" style="stop-color:#f59e0b"/></linearGradient></defs><text x="12" y="16" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">£</text></svg>
       <span style="font-size: 18px; color: #111; font-weight: 700;">Cash Rush UK</span>
     </div>
     <div class="nav-right">
@@ -144,9 +135,12 @@
 
 <!-- Hero -->
 <section class="survey-hero reveal">
-  <div class="badge">📋 Earn 200–500 Points</div>
-  <h1>VALIVY User Survey</h1>
-  <p>Help us make VALIVY better for you. It'll take 2 minutes — honest answers only, no right or wrong.</p>
+  <div class="badge">📋 Earn 200 Points</div>
+  <h1>VALIVY Shopping Survey</h1>
+  <p>We're launching Daily Deals on valivy.com soon — Amazon products worth £5–£10, yours for just £0.50. Help us stock what you actually want to buy.</p>
+  <div class="hero-highlight">
+    🔥 <strong>Daily Deals coming soon:</strong> Amazon products worth £5–£10, all just <strong>£0.50</strong> each!
+  </div>
 </section>
 
 <!-- Form -->
@@ -154,21 +148,24 @@
 
   <!-- Contact -->
   <div class="form-section contact-section reveal" style="margin-bottom: 20px;">
-    <div class="form-section-title">First, tell us who you are</div>
-    <div class="form-section-desc">So we can send your points after the survey</div>
-    <input type="text" class="contact-input" id="contact" placeholder="Your valivy.com username OR your Telegram @ handle" required>
-    <div class="contact-hint">Either one is fine — just make sure we can find you 💬</div>
+    <div class="form-section-title">Your valivy.com username</div>
+    <div class="form-section-desc">So we know where to send your points</div>
+    <input type="text" class="contact-input" id="contact" placeholder="Enter your valivy.com username" required>
+    <div class="contact-hint">We'll credit 200 points to this account within 24 hours ✅</div>
   </div>
 
   <!-- Q1 -->
   <div class="form-section reveal">
     <div class="q-block">
-      <div class="q-label"><span class="q-num">1</span><span class="q-text">How did you first hear about VALIVY?</span></div>
-      <div class="radio-group" data-q="q1">
-        <label class="radio-option"><input type="radio" name="q1" value="Telegram channel"><span class="radio-dot"></span><span class="radio-label">Telegram channel</span></label>
-        <label class="radio-option"><input type="radio" name="q1" value="A friend invited me"><span class="radio-dot"></span><span class="radio-label">A friend invited me</span></label>
-        <label class="radio-option"><input type="radio" name="q1" value="WhatsApp / social media"><span class="radio-dot"></span><span class="radio-label">WhatsApp / social media</span></label>
-        <label class="radio-option"><input type="radio" name="q1" value="Other"><span class="radio-dot"></span><span class="radio-label">Other: <span style="margin-left:6px;"><input type="text" class="text-input" style="display:inline-block;width:auto;padding:4px 10px;font-size:14px;border-width:1px;" placeholder="Tell us where..." onclick="event.stopPropagation();" onfocus="this.parentElement.parentElement.previousElementSibling.click();"></span></span></label>
+      <div class="q-label"><span class="q-num">1</span><span class="q-text">We're launching daily flash deals — Amazon products worth £5–£10, all just £0.50 each. What products would you want to see?</span></div>
+      <div class="checkbox-group" data-q="q1">
+        <label class="checkbox-option"><input type="checkbox" name="q1" value="📱 Tech accessories (cables, chargers, cases, etc.)"><span class="checkbox-box"></span><span class="checkbox-label">📱 Tech accessories (cables, chargers, cases, etc.)</span></label>
+        <label class="checkbox-option"><input type="checkbox" name="q1" value="🏠 Home & kitchen gadgets"><span class="checkbox-box"></span><span class="checkbox-label">🏠 Home & kitchen gadgets</span></label>
+        <label class="checkbox-option"><input type="checkbox" name="q1" value="🧴 Health & beauty (skincare, grooming, supplements)"><span class="checkbox-box"></span><span class="checkbox-label">🧴 Health & beauty (skincare, grooming, supplements)</span></label>
+        <label class="checkbox-option"><input type="checkbox" name="q1" value="🎮 Gaming & entertainment accessories"><span class="checkbox-box"></span><span class="checkbox-label">🎮 Gaming & entertainment accessories</span></label>
+        <label class="checkbox-option"><input type="checkbox" name="q1" value="👕 Apparel & accessories"><span class="checkbox-box"></span><span class="checkbox-label">👕 Apparel & accessories</span></label>
+        <label class="checkbox-option"><input type="checkbox" name="q1" value="🐾 Pet supplies"><span class="checkbox-box"></span><span class="checkbox-label">🐾 Pet supplies</span></label>
+        <label class="checkbox-option"><input type="checkbox" name="q1" value="Other"><span class="checkbox-box"></span><span class="checkbox-label">Other: <span style="margin-left:6px;"><input type="text" style="display:inline-block;width:auto;padding:4px 10px;font-size:14px;border:1px solid #ccc;border-radius:6px;background:#fff;" placeholder="Tell us..." onclick="event.stopPropagation();" onfocus="event.stopPropagation();"></span></span></label>
       </div>
     </div>
   </div>
@@ -176,11 +173,14 @@
   <!-- Q2 -->
   <div class="form-section reveal">
     <div class="q-block">
-      <div class="q-label"><span class="q-num">2</span><span class="q-text">Before today, did you know VALIVY offers 20% off on any Amazon UK product?</span></div>
+      <div class="q-label"><span class="q-num">2</span><span class="q-text">What kind of products do you buy most often on VALIVY?</span></div>
       <div class="radio-group" data-q="q2">
-        <label class="radio-option"><input type="radio" name="q2" value="Yes, and I've used it"><span class="radio-dot"></span><span class="radio-label">Yes, and I've used it</span></label>
-        <label class="radio-option"><input type="radio" name="q2" value="Yes, but I haven't tried it yet"><span class="radio-dot"></span><span class="radio-label">Yes, but I haven't tried it yet</span></label>
-        <label class="radio-option"><input type="radio" name="q2" value="No, this is new to me"><span class="radio-dot"></span><span class="radio-label">No, this is new to me</span></label>
+        <label class="radio-option"><input type="radio" name="q2" value="Tech & electronics"><span class="radio-dot"></span><span class="radio-label">Tech & electronics</span></label>
+        <label class="radio-option"><input type="radio" name="q2" value="Home & living"><span class="radio-dot"></span><span class="radio-label">Home & living</span></label>
+        <label class="radio-option"><input type="radio" name="q2" value="Health & beauty"><span class="radio-dot"></span><span class="radio-label">Health & beauty</span></label>
+        <label class="radio-option"><input type="radio" name="q2" value="Gifts & novelties"><span class="radio-dot"></span><span class="radio-label">Gifts & novelties</span></label>
+        <label class="radio-option"><input type="radio" name="q2" value="I haven't bought anything yet"><span class="radio-dot"></span><span class="radio-label">I haven't bought anything yet</span></label>
+        <label class="radio-option"><input type="radio" name="q2" value="Other"><span class="radio-dot"></span><span class="radio-label">Other: <span style="margin-left:6px;"><input type="text" style="display:inline-block;width:auto;padding:4px 10px;font-size:14px;border:1px solid #ccc;border-radius:6px;background:#fff;" placeholder="Tell us..." onclick="event.stopPropagation();" onfocus="event.stopPropagation();"></span></span></label>
       </div>
     </div>
   </div>
@@ -188,12 +188,12 @@
   <!-- Q3 -->
   <div class="form-section reveal">
     <div class="q-block">
-      <div class="q-label"><span class="q-num">3</span><span class="q-text">Have you read the website guide? <a href="https://logan6689.github.io/amazon-buyer-verification/" target="_blank" style="color:#FF6B35; font-size:13px;">👉 Open guide</a></span></div>
+      <div class="q-label"><span class="q-num">3</span><span class="q-text">How much do you usually spend per order on VALIVY?</span></div>
       <div class="radio-group" data-q="q3">
-        <label class="radio-option"><input type="radio" name="q3" value="Yes, it was helpful"><span class="radio-dot"></span><span class="radio-label">Yes, it was helpful</span></label>
-        <label class="radio-option"><input type="radio" name="q3" value="Yes, but it was confusing"><span class="radio-dot"></span><span class="radio-label">Yes, but it was confusing</span></label>
-        <label class="radio-option"><input type="radio" name="q3" value="No, I haven't seen it"><span class="radio-dot"></span><span class="radio-label">No, I haven't seen it</span></label>
-        <label class="radio-option"><input type="radio" name="q3" value="There's a guide? 😅"><span class="radio-dot"></span><span class="radio-label">There's a guide? 😅</span></label>
+        <label class="radio-option"><input type="radio" name="q3" value="Under £10"><span class="radio-dot"></span><span class="radio-label">Under £10</span></label>
+        <label class="radio-option"><input type="radio" name="q3" value="£10 - £20"><span class="radio-dot"></span><span class="radio-label">£10 – £20</span></label>
+        <label class="radio-option"><input type="radio" name="q3" value="£20 - £50"><span class="radio-dot"></span><span class="radio-label">£20 – £50</span></label>
+        <label class="radio-option"><input type="radio" name="q3" value="£50+"><span class="radio-dot"></span><span class="radio-label">£50+</span></label>
       </div>
     </div>
   </div>
@@ -201,13 +201,13 @@
   <!-- Q4 -->
   <div class="form-section reveal">
     <div class="q-block">
-      <div class="q-label"><span class="q-num">4</span><span class="q-text">Which VALIVY features have you used? <span class="q-hint">(Tick all that apply)</span></span></div>
-      <div class="checkbox-group" data-q="q4">
-        <label class="checkbox-option"><input type="checkbox" name="q4" value="Submitted Amazon orders for points"><span class="checkbox-box"></span><span class="checkbox-label">Submitted Amazon orders for points</span></label>
-        <label class="checkbox-option"><input type="checkbox" name="q4" value="Used 20% off proxy shopping"><span class="checkbox-box"></span><span class="checkbox-label">Used 20% off proxy shopping</span></label>
-        <label class="checkbox-option"><input type="checkbox" name="q4" value="Claimed Wednesday giveaway points"><span class="checkbox-box"></span><span class="checkbox-label">Claimed Wednesday giveaway points</span></label>
-        <label class="checkbox-option"><input type="checkbox" name="q4" value="Invited friends"><span class="checkbox-box"></span><span class="checkbox-label">Invited friends</span></label>
-        <label class="checkbox-option"><input type="checkbox" name="q4" value="Just browsing so far"><span class="checkbox-box"></span><span class="checkbox-label">Just browsing so far</span></label>
+      <div class="q-label"><span class="q-num">4</span><span class="q-text">What's most important when choosing a product on VALIVY?</span></div>
+      <div class="radio-group" data-q="q4">
+        <label class="radio-option"><input type="radio" name="q4" value="Price (the cheaper the better)"><span class="radio-dot"></span><span class="radio-label">Price (the cheaper the better)</span></label>
+        <label class="radio-option"><input type="radio" name="q4" value="Quality / brand reputation"><span class="radio-dot"></span><span class="radio-label">Quality / brand reputation</span></label>
+        <label class="radio-option"><input type="radio" name="q4" value="Fast delivery"><span class="radio-dot"></span><span class="radio-label">Fast delivery</span></label>
+        <label class="radio-option"><input type="radio" name="q4" value="Uniqueness (can't easily find elsewhere)"><span class="radio-dot"></span><span class="radio-label">Uniqueness (can't easily find elsewhere)</span></label>
+        <label class="radio-option"><input type="radio" name="q4" value="Other"><span class="radio-dot"></span><span class="radio-label">Other: <span style="margin-left:6px;"><input type="text" style="display:inline-block;width:auto;padding:4px 10px;font-size:14px;border:1px solid #ccc;border-radius:6px;background:#fff;" placeholder="Tell us..." onclick="event.stopPropagation();" onfocus="event.stopPropagation();"></span></span></label>
       </div>
     </div>
   </div>
@@ -215,13 +215,14 @@
   <!-- Q5 -->
   <div class="form-section reveal">
     <div class="q-block">
-      <div class="q-label"><span class="q-num">5</span><span class="q-text">If you haven't used the 20% off proxy shopping yet — what's the main reason?</span></div>
+      <div class="q-label"><span class="q-num">5</span><span class="q-text">Which payment method do you prefer when shopping online?</span></div>
       <div class="radio-group" data-q="q5">
-        <label class="radio-option"><input type="radio" name="q5" value="Don't need to buy anything right now"><span class="radio-dot"></span><span class="radio-label">Don't need to buy anything right now</span></label>
-        <label class="radio-option"><input type="radio" name="q5" value="Not sure how it works"><span class="radio-dot"></span><span class="radio-label">Not sure how it works</span></label>
-        <label class="radio-option"><input type="radio" name="q5" value="Worried about payment / trust"><span class="radio-dot"></span><span class="radio-label">Worried about payment / trust</span></label>
-        <label class="radio-option"><input type="radio" name="q5" value="The process seems too complicated"><span class="radio-dot"></span><span class="radio-label">The process seems too complicated</span></label>
-        <label class="radio-option"><input type="radio" name="q5" value="Other"><span class="radio-dot"></span><span class="radio-label">Other: <span style="margin-left:6px;"><input type="text" class="text-input" style="display:inline-block;width:auto;padding:4px 10px;font-size:14px;border-width:1px;" placeholder="Tell us..." onclick="event.stopPropagation();" onfocus="this.parentElement.parentElement.previousElementSibling.click();"></span></span></label>
+        <label class="radio-option"><input type="radio" name="q5" value="PayPal"><span class="radio-dot"></span><span class="radio-label">PayPal</span></label>
+        <label class="radio-option"><input type="radio" name="q5" value="Debit / Credit card"><span class="radio-dot"></span><span class="radio-label">Debit / Credit card</span></label>
+        <label class="radio-option"><input type="radio" name="q5" value="Apple Pay / Google Pay"><span class="radio-dot"></span><span class="radio-label">Apple Pay / Google Pay</span></label>
+        <label class="radio-option"><input type="radio" name="q5" value="Bank transfer"><span class="radio-dot"></span><span class="radio-label">Bank transfer</span></label>
+        <label class="radio-option"><input type="radio" name="q5" value="VALIVY points / balance only"><span class="radio-dot"></span><span class="radio-label">VALIVY points / balance only</span></label>
+        <label class="radio-option"><input type="radio" name="q5" value="Other"><span class="radio-dot"></span><span class="radio-label">Other: <span style="margin-left:6px;"><input type="text" style="display:inline-block;width:auto;padding:4px 10px;font-size:14px;border:1px solid #ccc;border-radius:6px;background:#fff;" placeholder="Tell us..." onclick="event.stopPropagation();" onfocus="event.stopPropagation();"></span></span></label>
       </div>
     </div>
   </div>
@@ -229,12 +230,14 @@
   <!-- Q6 -->
   <div class="form-section reveal">
     <div class="q-block">
-      <div class="q-label"><span class="q-num">6</span><span class="q-text">Have you topped up or paid via PayPal on the platform?</span></div>
+      <div class="q-label"><span class="q-num">6</span><span class="q-text">Which platforms do you shop on most often?</span></div>
       <div class="radio-group" data-q="q6">
-        <label class="radio-option"><input type="radio" name="q6" value="Yes, and it was smooth"><span class="radio-dot"></span><span class="radio-label">Yes, and it was smooth</span></label>
-        <label class="radio-option"><input type="radio" name="q6" value="Yes, but I had issues"><span class="radio-dot"></span><span class="radio-label">Yes, but I had issues</span></label>
-        <label class="radio-option"><input type="radio" name="q6" value="No, I'm not comfortable yet"><span class="radio-dot"></span><span class="radio-label">No, I'm not comfortable yet</span></label>
-        <label class="radio-option"><input type="radio" name="q6" value="No, I don't use PayPal"><span class="radio-dot"></span><span class="radio-label">No, I don't use PayPal</span></label>
+        <label class="radio-option"><input type="radio" name="q6" value="Amazon"><span class="radio-dot"></span><span class="radio-label">Amazon</span></label>
+        <label class="radio-option"><input type="radio" name="q6" value="eBay"><span class="radio-dot"></span><span class="radio-label">eBay</span></label>
+        <label class="radio-option"><input type="radio" name="q6" value="AliExpress / Temu"><span class="radio-dot"></span><span class="radio-label">AliExpress / Temu</span></label>
+        <label class="radio-option"><input type="radio" name="q6" value="TikTok Shop"><span class="radio-dot"></span><span class="radio-label">TikTok Shop</span></label>
+        <label class="radio-option"><input type="radio" name="q6" value="VALIVY"><span class="radio-dot"></span><span class="radio-label">VALIVY</span></label>
+        <label class="radio-option"><input type="radio" name="q6" value="Other"><span class="radio-dot"></span><span class="radio-label">Other: <span style="margin-left:6px;"><input type="text" style="display:inline-block;width:auto;padding:4px 10px;font-size:14px;border:1px solid #ccc;border-radius:6px;background:#fff;" placeholder="Tell us..." onclick="event.stopPropagation();" onfocus="event.stopPropagation();"></span></span></label>
       </div>
     </div>
   </div>
@@ -242,56 +245,23 @@
   <!-- Q7 -->
   <div class="form-section reveal">
     <div class="q-block">
-      <div class="q-label"><span class="q-num">7</span><span class="q-text">What's your biggest concern about using VALIVY? <span class="q-hint">(Pick one)</span></span></div>
-      <div class="radio-group" data-q="q7">
-        <label class="radio-option"><input type="radio" name="q7" value="Is this legit?"><span class="radio-dot"></span><span class="radio-label">Is this legit?</span></label>
-        <label class="radio-option"><input type="radio" name="q7" value="Will my personal data be safe?"><span class="radio-dot"></span><span class="radio-label">Will my personal data be safe?</span></label>
-        <label class="radio-option"><input type="radio" name="q7" value="Will the product actually arrive?"><span class="radio-dot"></span><span class="radio-label">Will the product actually arrive?</span></label>
-        <label class="radio-option"><input type="radio" name="q7" value="How do refunds work?"><span class="radio-dot"></span><span class="radio-label">How do refunds work?</span></label>
-        <label class="radio-option"><input type="radio" name="q7" value="No real concerns"><span class="radio-dot"></span><span class="radio-label">No real concerns</span></label>
-      </div>
+      <div class="q-label"><span class="q-num">7</span><span class="q-text">Any specific product you've been looking for but couldn't find on VALIVY?<br><span class="q-hint">Tell us and we'll try to stock it</span></span></div>
+      <textarea class="text-input" name="q7" placeholder="Type the product name or description here..." rows="3"></textarea>
     </div>
   </div>
 
   <!-- Q8 -->
   <div class="form-section reveal">
     <div class="q-block">
-      <div class="q-label"><span class="q-num">8</span><span class="q-text">What would make you use VALIVY more often?</span></div>
-      <div class="radio-group" data-q="q8">
-        <label class="radio-option"><input type="radio" name="q8" value="Clearer website guide / FAQ"><span class="radio-dot"></span><span class="radio-label">Clearer website guide / FAQ</span></label>
-        <label class="radio-option"><input type="radio" name="q8" value="More giveaway events"><span class="radio-dot"></span><span class="radio-label">More giveaway events</span></label>
-        <label class="radio-option"><input type="radio" name="q8" value="Faster delivery times"><span class="radio-dot"></span><span class="radio-label">Faster delivery times</span></label>
-        <label class="radio-option"><input type="radio" name="q8" value="A mobile app"><span class="radio-dot"></span><span class="radio-label">A mobile app</span></label>
-        <label class="radio-option"><input type="radio" name="q8" value="Other"><span class="radio-dot"></span><span class="radio-label">Other: <span style="margin-left:6px;"><input type="text" class="text-input" style="display:inline-block;width:auto;padding:4px 10px;font-size:14px;border-width:1px;" placeholder="Tell us..." onclick="event.stopPropagation();" onfocus="this.parentElement.parentElement.previousElementSibling.click();"></span></span></label>
-      </div>
-    </div>
-  </div>
-
-  <!-- Q9 -->
-  <div class="form-section reveal">
-    <div class="q-block">
-      <div class="q-label"><span class="q-num">9</span><span class="q-text">What's ONE thing you wish VALIVY did differently?</span></div>
-      <textarea class="text-input" name="q9" placeholder="Type your answer here..." rows="3"></textarea>
-    </div>
-  </div>
-
-  <!-- Q10 -->
-  <div class="form-section reveal">
-    <div class="q-block">
-      <div class="q-label"><span class="q-num">10</span><span class="q-text">Would you recommend VALIVY to a friend?</span></div>
-      <div class="radio-group" data-q="q10">
-        <label class="radio-option"><input type="radio" name="q10" value="Definitely"><span class="radio-dot"></span><span class="radio-label">Definitely</span></label>
-        <label class="radio-option"><input type="radio" name="q10" value="Maybe"><span class="radio-dot"></span><span class="radio-label">Maybe</span></label>
-        <label class="radio-option"><input type="radio" name="q10" value="Not right now"><span class="radio-dot"></span><span class="radio-label">Not right now</span></label>
-        <label class="radio-option"><input type="radio" name="q10" value="No"><span class="radio-dot"></span><span class="radio-label">No</span></label>
-      </div>
+      <div class="q-label"><span class="q-num">8</span><span class="q-text">What's ONE thing that would make you visit VALIVY every day?</span></div>
+      <textarea class="text-input" name="q8" placeholder="Type your answer here..." rows="3"></textarea>
     </div>
   </div>
 
   <!-- Submit -->
   <div class="submit-section">
-    <button type="submit" class="submit-btn" id="submitBtn" onclick="submitSurvey()">Submit & Claim Points →</button>
-    <div class="submit-note">Your answers are sent directly to our team. We'll send your points within 24 hours.</div>
+    <button type="submit" class="submit-btn" id="submitBtn" onclick="submitSurvey()">Submit & Earn 200 Points →</button>
+    <div class="submit-note">✅ Points credited within 24 hours.</div>
   </div>
 
 </form>
@@ -322,9 +292,7 @@
 // Radio selection
 document.querySelectorAll('.radio-option').forEach(opt => {
   opt.addEventListener('click', function(e) {
-    // Don't intercept clicks on the "Other" text input
     if (e.target.tagName === 'INPUT' && e.target.type === 'text') {
-      // Still select this radio option
       const group = this.closest('.radio-group');
       group.querySelectorAll('.radio-option').forEach(o => o.classList.remove('selected'));
       this.classList.add('selected');
@@ -358,14 +326,14 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 0.1 });
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-// Build survey message and submit directly to Telegram Bot API
+// Telegram Bot API config
 const BOT_TOKEN = '8851236279:AAG9qEgF7vJDgoW58uDc4lyYyPy4R9_Pzcg';
 const CHAT_ID = '7977673119';
 
 function submitSurvey() {
   const contact = document.getElementById('contact').value.trim();
   if (!contact) {
-    alert('Please enter your Valivy username or Telegram @ handle so we can send your points!');
+    alert('Please enter your valivy.com username so we can send your points!');
     document.getElementById('contact').focus();
     return;
   }
@@ -373,7 +341,6 @@ function submitSurvey() {
   const msg = buildMessage(contact);
   if (!msg) return;
 
-  // Show loading state
   document.getElementById('successOverlay').classList.add('open');
   document.body.style.overflow = 'hidden';
   document.getElementById('successIcon').textContent = '⏳';
@@ -381,7 +348,6 @@ function submitSurvey() {
   document.getElementById('successMsg').textContent = 'Sending your survey responses...';
   document.getElementById('successActions').style.display = 'none';
 
-  // Send directly via Telegram Bot API (supports CORS)
   fetch('https://api.telegram.org/bot' + BOT_TOKEN + '/sendMessage', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -396,9 +362,8 @@ function submitSurvey() {
     if (data.ok) {
       document.getElementById('successIcon').textContent = '✓';
       document.getElementById('successTitle').textContent = 'Thank you!';
-      document.getElementById('successMsg').textContent = 'Your survey has been submitted successfully. We will send your 200-500 points within 24 hours!';
+      document.getElementById('successMsg').textContent = 'Your survey has been submitted. 200 points will be credited to your account within 24 hours!';
       document.getElementById('successActions').style.display = 'flex';
-      // Reset form
       document.getElementById('surveyForm').reset();
       document.querySelectorAll('.radio-option.selected').forEach(el => el.classList.remove('selected'));
       document.querySelectorAll('.checkbox-option.checked').forEach(el => el.classList.remove('checked'));
@@ -416,65 +381,56 @@ function submitSurvey() {
 }
 
 function buildMessage(contact) {
-  let msg = '📋 *VALIVY User Survey*\n';
+  let msg = '📋 *VALIVY Shopping Survey*\n';
   msg += '━━━━━━━━━━━━━━━\n';
-  msg += '👤 Contact: ' + contact + '\n';
+  msg += '👤 Valivy user: ' + contact + '\n';
   msg += '━━━━━━━━━━━━━━━\n';
 
-  // Q1
-  let q1 = getRadio('q1');
-  if (q1 === null) { alert('Please answer Question 1'); return null; }
-  let q1Other = getOtherText('q1');
-  msg += '\n1️⃣ How did you hear about VALIVY?\n→ ' + (q1 === 'Other' ? 'Other: ' + q1Other : q1) + '\n';
+  // Q1 - checkbox
+  let q1 = getCheckbox('q1');
+  if (q1.length === 0) { alert('Please answer Question 1 (tick at least one)'); return null; }
+  let q1Other = getOtherTextCheckbox('q1');
+  msg += '\n1️⃣ Products you want in daily deals?\n→ ' + q1.map(v => v === 'Other' ? 'Other: ' + q1Other : v).join(', ') + '\n';
 
-  // Q2
+  // Q2 - radio
   let q2 = getRadio('q2');
   if (q2 === null) { alert('Please answer Question 2'); return null; }
-  msg += '\n2️⃣ Did you know about 20% off Amazon UK?\n→ ' + q2 + '\n';
+  let q2Other = getOtherText('q2');
+  msg += '\n2️⃣ Products you buy most on VALIVY?\n→ ' + (q2 === 'Other' ? 'Other: ' + q2Other : q2) + '\n';
 
-  // Q3
+  // Q3 - radio
   let q3 = getRadio('q3');
   if (q3 === null) { alert('Please answer Question 3'); return null; }
-  msg += '\n3️⃣ Have you read the website guide?\n→ ' + q3 + '\n';
+  msg += '\n3️⃣ Usual spend per order?\n→ ' + q3 + '\n';
 
-  // Q4
-  let q4 = getCheckbox('q4');
-  if (q4.length === 0) { alert('Please answer Question 4 (tick at least one)'); return null; }
-  msg += '\n4️⃣ Features used:\n→ ' + q4.join(', ') + '\n';
+  // Q4 - radio
+  let q4 = getRadio('q4');
+  if (q4 === null) { alert('Please answer Question 4'); return null; }
+  let q4Other = getOtherText('q4');
+  msg += '\n4️⃣ Most important when choosing a product?\n→ ' + (q4 === 'Other' ? 'Other: ' + q4Other : q4) + '\n';
 
-  // Q5
+  // Q5 - radio
   let q5 = getRadio('q5');
   if (q5 === null) { alert('Please answer Question 5'); return null; }
   let q5Other = getOtherText('q5');
-  msg += '\n5️⃣ Why haven\'t you used proxy shopping?\n→ ' + (q5 === 'Other' ? 'Other: ' + q5Other : q5) + '\n';
+  msg += '\n5️⃣ Preferred payment method?\n→ ' + (q5 === 'Other' ? 'Other: ' + q5Other : q5) + '\n';
 
-  // Q6
+  // Q6 - radio
   let q6 = getRadio('q6');
   if (q6 === null) { alert('Please answer Question 6'); return null; }
-  msg += '\n6️⃣ PayPal top-up experience?\n→ ' + q6 + '\n';
+  let q6Other = getOtherText('q6');
+  msg += '\n6️⃣ Platforms you shop on most?\n→ ' + (q6 === 'Other' ? 'Other: ' + q6Other : q6) + '\n';
 
-  // Q7
-  let q7 = getRadio('q7');
-  if (q7 === null) { alert('Please answer Question 7'); return null; }
-  msg += '\n7️⃣ Biggest concern?\n→ ' + q7 + '\n';
+  // Q7 - text
+  let q7 = document.querySelector('textarea[name="q7"]').value.trim();
+  msg += '\n7️⃣ Product you couldn\'t find on VALIVY?\n→ ' + (q7 || '(No answer)') + '\n';
 
-  // Q8
-  let q8 = getRadio('q8');
-  if (q8 === null) { alert('Please answer Question 8'); return null; }
-  let q8Other = getOtherText('q8');
-  msg += '\n8️⃣ What would make you use VALIVY more?\n→ ' + (q8 === 'Other' ? 'Other: ' + q8Other : q8) + '\n';
-
-  // Q9
-  let q9 = document.querySelector('textarea[name="q9"]').value.trim();
-  msg += '\n9️⃣ One thing you wish VALIVY did differently?\n→ ' + (q9 || '(No answer)') + '\n';
-
-  // Q10
-  let q10 = getRadio('q10');
-  if (q10 === null) { alert('Please answer Question 10'); return null; }
-  msg += '\n🔟 Would you recommend VALIVY?\n→ ' + q10 + '\n';
+  // Q8 - text
+  let q8 = document.querySelector('textarea[name="q8"]').value.trim();
+  msg += '\n8️⃣ One thing to make you visit VALIVY daily?\n→ ' + (q8 || '(No answer)') + '\n';
 
   msg += '\n━━━━━━━━━━━━━━━\n';
-  msg += '✅ Survey submitted automatically';
+  msg += '✅ Survey submitted — 200 points pending';
 
   return msg;
 }
@@ -490,6 +446,13 @@ function getCheckbox(name) {
 }
 
 function getOtherText(name) {
+  let group = document.querySelector('[data-q="' + name + '"]');
+  if (!group) return '';
+  let textInput = group.querySelector('input[type="text"]');
+  return textInput ? textInput.value.trim() : '';
+}
+
+function getOtherTextCheckbox(name) {
   let group = document.querySelector('[data-q="' + name + '"]');
   if (!group) return '';
   let textInput = group.querySelector('input[type="text"]');
