@@ -135,7 +135,7 @@
 
 <!-- Hero -->
 <section class="survey-hero reveal">
-  <div class="badge">📋 Earn 200 Points</div>
+  <div class="badge">📋 Earn 200–500 Points</div>
   <h1>VALIVY Shopping Survey</h1>
   <p>We're launching Daily Deals on valivy.com soon — Amazon products worth £5–£10, yours for just £0.50. Help us stock what you actually want to buy.</p>
   <div class="hero-highlight">
@@ -260,7 +260,7 @@
 
   <!-- Submit -->
   <div class="submit-section">
-    <button type="submit" class="submit-btn" id="submitBtn" onclick="submitSurvey()">Submit & Earn 200 Points →</button>
+    <button type="submit" class="submit-btn" id="submitBtn" onclick="submitSurvey()">Submit & Earn 200–500 Points →</button>
     <div class="submit-note">✅ Points credited within 24 hours.</div>
   </div>
 
@@ -362,7 +362,7 @@ function submitSurvey() {
     if (data.ok) {
       document.getElementById('successIcon').textContent = '✓';
       document.getElementById('successTitle').textContent = 'Thank you!';
-      document.getElementById('successMsg').textContent = 'Your survey has been submitted. 200 points will be credited to your account within 24 hours!';
+      document.getElementById('successMsg').textContent = 'Your survey has been submitted. 200–500 points will be credited to your account within 24 hours!';
       document.getElementById('successActions').style.display = 'flex';
       document.getElementById('surveyForm').reset();
       document.querySelectorAll('.radio-option.selected').forEach(el => el.classList.remove('selected'));
@@ -430,7 +430,7 @@ function buildMessage(contact) {
   msg += '\n8️⃣ One thing to make you visit VALIVY daily?\n→ ' + (q8 || '(No answer)') + '\n';
 
   msg += '\n━━━━━━━━━━━━━━━\n';
-  msg += '✅ Survey submitted — 200 points pending';
+  msg += '✅ Survey submitted — 200-500 points pending';
 
   return msg;
 }
